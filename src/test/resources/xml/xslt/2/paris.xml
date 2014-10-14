@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ph:photo xmlns:ph="http://ananas.org/2003/tips/photo">
+   <ph:title>Eiffel tower</ph:title>
+   <ph:location>Paris</ph:location>
+   <ph:date>May 2003</ph:date>
+   <ph:description>
+      The Eiffel tower was built for the International Exhibition of Paris of
+      1900. It's a sight you can't miss, it is shown here from an RER train
+      station.
+   </ph:description>
+</ph:photo>

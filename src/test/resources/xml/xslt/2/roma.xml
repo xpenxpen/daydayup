@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ph:photo xmlns:ph="http://ananas.org/2003/tips/photo">
+   <ph:title>Coliseum</ph:title>
+   <ph:location>Roma</ph:location>
+   <ph:date>February 2003</ph:date>
+   <ph:description>
+      The Coliseum is regarded by many as one of the finest example of Roman
+      engineering. It hosted public games where criminals, slaves and animals
+      fought each other until death.
+   </ph:description>
+</ph:photo>

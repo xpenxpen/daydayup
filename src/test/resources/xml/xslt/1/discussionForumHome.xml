@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="discussionForumHome.xsl"?>
+<discussionForumHome>
+	<messageBoard id="1" name="Java Programming"/>
+	<messageBoard id="2" name="XML Programming"/>
+	<messageBoard id="3" name="XSLT Questions"/>
+</discussionForumHome>

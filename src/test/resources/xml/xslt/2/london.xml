@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ph:photo xmlns:ph="http://ananas.org/2003/tips/photo">
+   <ph:title>Double-decker bus</ph:title>
+   <ph:location>London</ph:location>
+   <ph:date>October 2002</ph:date>
+   <ph:description>
+      The unescapable symbol of London, the double-decker bus is much taller
+      than typical buses to carry many passagers through London overcrowded
+      streets.
+   </ph:description>
+</ph:photo>
