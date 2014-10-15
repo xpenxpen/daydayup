@@ -15,6 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
+import org.junit.Test;
 
 /**
  * 演示用fop生成一个带中文的pdf文件
@@ -22,7 +23,9 @@ import org.apache.fop.apps.MimeConstants;
  */
 public class FopTest {
 
-    public static void main(String[] args) throws Exception {
+    //演示用fop生成一个带中文的pdf文件
+    @Test
+    public void testChinese() throws Exception {
         
         // Step 1: Construct a FopFactory
         FopFactory fopFactory = FopFactory.newInstance();

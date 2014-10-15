@@ -3,6 +3,8 @@ package org.xpen.hello.pdf;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Test;
+
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,13 +14,14 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
 /**
- * 演示用IText生成一个带有中/日/韩文的pdf
+ * 演示用IText生成pdf
  *
  */
-public class ItextCjkExample {
- 
-    /** The resulting PDF file. */
-    public static final String RESULT = "target/cjk_example.pdf";
+public class ItextTest {
+
+    public static final String RESULT1 = "target/hello.pdf";
+    public static final String RESULT2 = "target/cjk_example.pdf";
+    
     /** Movies, their director and original title */
     public static final String[][] MOVIES = {
         {
@@ -40,12 +43,29 @@ public class ItextCjkExample {
             "\ube48\uc9d1"
         }
     };
- 
-    public void createPdf(String filename) throws IOException, DocumentException {
+
+    //演示用IText生成一个简单的pdf文件
+    @Test
+    public void testCreatePdf() throws DocumentException, IOException {
         // step 1
         Document document = new Document();
         // step 2
-        PdfWriter.getInstance(document, new FileOutputStream(filename));
+        PdfWriter.getInstance(document, new FileOutputStream(RESULT1));
+        // step 3
+        document.open();
+        // step 4
+        document.add(new Paragraph("Hello World!"));
+        // step 5
+        document.close();
+    }
+    
+    //演示用IText生成一个带有中/日/韩文的pdf
+    @Test
+    public void testCjk() throws DocumentException, IOException {
+        // step 1
+        Document document = new Document();
+        // step 2
+        PdfWriter.getInstance(document, new FileOutputStream(RESULT2));
         // step 3
         document.open();
         // step 4
@@ -64,8 +84,5 @@ public class ItextCjkExample {
         // step 5
         document.close();
     }
- 
-    public static void main(String[] args) throws IOException, DocumentException {
-        new ItextCjkExample().createPdf(RESULT);
-    }
+    
 }

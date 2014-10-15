@@ -3,7 +3,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:ph="http://ananas.org/2003/tips/photo">
 
-<xsl:output method="html" />
+    <xsl:output method="xml" />
 
     <xsl:template match="ph:index">
         <html>
