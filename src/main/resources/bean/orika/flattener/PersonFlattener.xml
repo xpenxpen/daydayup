@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flattener>
+	<package-name>org.xpen.hello.bean.orika.generated.flattener</package-name>
+	<class-name>PersonMappingConfigurer3</class-name>
+	<src-class>org.xpen.hello.bean.orika.bean.Person</src-class>
+	<dest-class>org.xpen.hello.bean.orika.dto.PersonDto</dest-class>
+	<mappings>
+		<mapping src="name.first" dest="firstName" />
+		<mapping src="name.last" dest="lastName" />
+		<mapping src="age" dest="age" />
+		<mapping src="houses[0].address.city" dest="houseCity1" />
+		<mapping src="houses[1].address.city" dest="houseCity2" />
+		<mapping src="houses[2].address.city" dest="houseCity3" />
+		<mapping src="houses[0].price" dest="housePrice1" />
+		<mapping src="houses[1].price" dest="housePrice2" />
+		<mapping src="houses[2].price" dest="housePrice3" />
+	</mappings>
+</flattener>

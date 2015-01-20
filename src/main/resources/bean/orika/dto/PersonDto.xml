@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dto>
+	<package-name>org.xpen.hello.bean.orika.dto</package-name>
+	<class-name>PersonDto</class-name>
+	<fields>
+		<field name="firstName" type="String" />
+		<field name="lastName" type="String" />
+		<field name="age" type="int" />
+		<field name="houseCity1" type="String" />
+		<field name="housePrice1" type="long" />
+		<field name="houseCity2" type="String" />
+		<field name="housePrice2" type="long" />
+		<field name="houseCity3" type="String" />
+		<field name="housePrice3" type="long" />
+		<field name="houseList" type="List<House>" />
+	</fields>
+</dto>

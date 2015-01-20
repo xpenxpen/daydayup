@@ -12,6 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lib.spring.version>3.1.2.RELEASE</lib.spring.version>
     </properties>
 
     <dependencies>
@@ -22,6 +23,29 @@
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
+        
+        <!-- bean -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+        
+        <!-- template -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+        
+        <!-- SPRING begin -->
+        <!-- spring basic -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${lib.spring.version}</version>
+        </dependency>
+        <!-- SPRING end -->
         
         <!-- PDF -->
         <!-- itext -->
@@ -118,6 +142,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${lib.spring.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- TEST end -->
