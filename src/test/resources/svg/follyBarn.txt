@@ -1,0 +1,12 @@
+
+// folly barn 2001
+
+cycle circle(origin 20) 3 -90 {
+  draw red circles(vertex_0 40 43)
+}
+
+cycle circle(origin 10) 3 -90 {
+  draw blue circles(vertex_0 20 23)
+}
+
+draw circles(origin 8 63 2)

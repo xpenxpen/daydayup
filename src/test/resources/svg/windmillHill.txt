@@ -1,0 +1,17 @@
+
+// Windmill Hill 2003
+
+draw circle(origin 42)
+
+cycle circle(origin 4) 5 {
+  draw red circle(vertex_0 7)
+}
+
+cycle circle(origin 6) 5 % {
+  draw green circle(vertex_0  10)
+}
+
+cycle circle(origin 13) 5 % {
+  draw blue circles(vertex_0 24 26)
+}
+

@@ -1,0 +1,13 @@
+
+// Barbury Castle 1999
+
+
+draw circles(origin 42 43 44)
+
+cycle circle(origin 42) 3 {
+  draw red circles(vertex_0 50 52)
+}
+
+cycle circle(origin 15) 3 {
+  draw blue circles(vertex_0 34 36)
+}

@@ -1,0 +1,20 @@
+
+// West Stowell 2003
+
+
+let a = 160
+
+draw circle(origin a)
+
+cycle circle(origin a) 13 {
+  draw red line(vertex_0 vertex_5)
+}
+
+cycle circle(origin a) 13 % {
+  draw green circle(vertex_0 10)
+}
+
+cycle circle(origin 74) 13 % {
+  draw blue circle(vertex_0 4)
+}
+	

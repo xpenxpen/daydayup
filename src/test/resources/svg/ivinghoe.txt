@@ -1,0 +1,29 @@
+
+// Ivinghoe Beacon 2002
+
+let aRadius = 100
+let bRadius = 20
+let cRadius = 81.8668
+let dRadius = 30
+let s = 1.06849
+
+draw red circle(origin bRadius)
+
+let outerC = circle(origin bRadius*3)
+draw circle(origin bRadius*3)
+
+cycle circle(origin bRadius*2) 3 0 {    // was cRadius
+  draw green circle(vertex_0 bRadius)
+
+  let a = intersect( outerC circle(vertex_0 bRadius) )
+  draw orange circle(a dRadius)
+
+  draw red circle((vertex_0)*2.3 bRadius)
+
+  draw circle((vertex_0)*3 bRadius*0.8)
+}
+
+cycle circle(origin bRadius) 3 0 {
+  draw blue circle(vertex_0 bRadius*2)   // was cRadius
+}
+

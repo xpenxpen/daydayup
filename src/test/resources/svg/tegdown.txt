@@ -1,0 +1,11 @@
+
+// Tegdown Hill 2003
+
+let a = 80
+let b = 85
+
+cycle circle(origin a) 6 { 
+   draw blue circles (vertex_0  a b 56 61)   // four blues per vertex
+}
+
+draw circles (origin a b)  // two black circles

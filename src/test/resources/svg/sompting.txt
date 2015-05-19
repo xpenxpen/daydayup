@@ -1,0 +1,25 @@
+
+// Sompting 2002
+
+let a = 40
+let b = 37
+let c = 22
+let d = 56
+let e = 4
+let angle1 = (2*pi * 360 / 16) * (a / 4)
+
+
+draw circles(origin a b c)
+
+let centerC = circle(origin a)
+
+cycle centerC 2 {
+  let c1 = circle(vertex_0 d)
+  draw red c1
+  let pt2 = turn(centerC vertex_0 angle1)
+  let c2 = circle(pt2 d)
+  draw green c2
+  let ipt = intersect(c1 c2)
+  // print "intersect pt=" ipt
+  draw blue circle(ipt e)
+}

@@ -1,0 +1,20 @@
+
+// Glassner's Pendant
+
+// make central iris
+cycle circle(origin 18) 5 -18 {
+  draw circles( vertex_0 25 31)
+}
+
+// make outer spirals
+cycle circle(origin 118) 5 -18 {
+  draw blue circles( vertex_0 18 22)
+
+  // print "vertex0=" vertex_0
+  // print "vertex1=" vertex_1
+  let step = (vertex_1-vertex_0)/6
+
+  draw red circle( vertex_0+step 44)
+  draw green circle( vertex_0+(step*3) 44)
+  draw orange circle( vertex_0+(step*4) 22)
+}
