@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-autowire="constructor">
+
+    <!-- 暴露监控设备，如果要暴露，这个Bean一定 不 可以延迟初始化-->  
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"
+        lazy-init="false">
+        <property name="beans">
+            <map>
+                <entry key="bean:name=HusbandLocal" value-ref="HusbandLocal" />
+            </map>
+        </property>
+    </bean>
+    
+    <!-- 远程连接 RMI方式 JSR-160连接器-->  
+    <bean class="org.springframework.jmx.support.ConnectorServerFactoryBean"
+        depends-on="rmiRegistry">
+        <property name="objectName" value="connector:name=rmi" />
+          
+        <!-- 远程连接的地址 -->
+        <property name="serviceUrl"
+            value="service:jmx:rmi://localhost/jndi/rmi://localhost:9587/myconnector" />
+    </bean>
+      
+    <!-- 使用JNDI-RMI的方式进行远程连接通讯,并且配置占用端口号 -->
+    <bean id="rmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+        <property name="port" value="9587" />
+    </bean>
+     
+    <!-- mbean -->  
+    <bean id="HusbandLocal" class="org.xpen.hello.jmx.HusbandLocal" />
+</beans>
