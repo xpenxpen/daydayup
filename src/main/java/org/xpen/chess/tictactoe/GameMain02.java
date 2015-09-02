@@ -18,6 +18,8 @@ import org.xpen.chess.tictactoe.ai.AIPlayerMinimax;
 
 /**
  * Tic-Tac-Toe: Play with computer
+ * 出处：https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html
+ * 原文有详细的讲解以及人工智能讲解
  */
 @SuppressWarnings("serial")
 public class GameMain02 extends JPanel {
