@@ -153,6 +153,13 @@
             <artifactId>jansi</artifactId>
             <version>1.11</version>
         </dependency>
+        
+        <!-- graph -->
+        <dependency>
+            <groupId>com.github.monkeysintown</groupId>
+            <artifactId>jgraphx</artifactId>
+            <version>3.3.1.1</version>
+        </dependency>
 
         <!-- TEST begin -->
         <dependency>
