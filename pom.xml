@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lib.spring.version>3.1.2.RELEASE</lib.spring.version>
+        <lib.spring.version>4.2.4.RELEASE</lib.spring.version>
     </properties>
 
     <dependencies>
@@ -185,8 +185,8 @@
                 <version>3.3</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
