@@ -46,7 +46,7 @@ class ClhSpinLock {
     public void unlock() {
         final Node node = this.node.get();
         node.locked = false;
-        //this.node.set(this.prev.get());
+        this.node.set(this.prev.get());
     }
     
     public static void main(String[] args) throws Exception {
@@ -65,6 +65,7 @@ class ClhSpinLock {
                         e.printStackTrace();
                     }
                     lock.unlock();
+                    //System.out.println(Thread.currentThread().getId() + " released the lock!");
                 }
             }).start();
         }

@@ -299,6 +299,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
 
     /**
      * Wait queue node class.
+     * 等待队列节点
      * 
      * <p>
      * The wait queue is a variant of a "CLH" (Craig, Landin, and Hagersten)
@@ -313,6 +314,9 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * acquire if it is first in the queue. But being first does not guarantee
      * success; it only gives the right to contend. So the currently released
      * contender thread may need to rewait.
+     * CLH的一个变种（自旋锁）.
+     * CLH lock queue其实就是一个FIFO的队列，队列中的每个结点（线程）只要等待其前继释放锁就可以了。
+     * 所谓自旋锁简单来说就是线程通过循环来等待而不是睡眠。
      * 
      * <p>
      * To enqueue into a CLH lock, you atomically splice it in as new tail. To
@@ -566,6 +570,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * Atomically sets synchronization state to the given updated value if the
      * current state value equals the expected value. This operation has memory
      * semantics of a <tt>volatile</tt> read and write.
+     * CAS设置state
      * 
      * @param expect
      *            the expected value
@@ -585,6 +590,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * The number of nanoseconds for which it is faster to spin rather than to
      * use timed park. A rough estimate suffices to improve responsiveness with
      * very short timeouts.
+     * 小于1秒的话采用自旋锁
      */
     static final long spinForTimeoutThreshold = 1000L;
 
