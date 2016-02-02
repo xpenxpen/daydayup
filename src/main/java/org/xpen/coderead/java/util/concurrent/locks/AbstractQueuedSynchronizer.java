@@ -604,12 +604,15 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * @return node's predecessor
      */
     private Node enq(final Node node) {
+        //乐观等待
         for (;;) {
             Node t = tail;
             if (t == null) { // Must initialize
+                //当第一次产生竞争的时候初始化虚拟头结点，节省空间 
                 if (compareAndSetHead(new Node()))
                     tail = head;
             } else {
+                //注意到第一次第二轮会走到这里，所以第一次会创建2个节点
                 node.prev = t;
                 if (compareAndSetTail(t, node)) {
                     t.next = node;
@@ -622,7 +625,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
     /**
      * Creates and enqueues node for current thread and given mode.
      * <p>
-     * 入队操作
+     * 新增等待线程节点
      * 
      * @param mode
      *            Node.EXCLUSIVE for exclusive, Node.SHARED for shared
@@ -630,6 +633,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      */
     private Node addWaiter(Node mode) {
         System.out.println(Thread.currentThread().getId() + " addWaiter() ");
+        //使用当前线程构造出新的节点  
         Node node = new Node(Thread.currentThread(), mode);
         // Try the fast path of enq; backup to full enq on failure
         Node pred = tail;
@@ -1312,6 +1316,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      *            represent anything you like.
      */
     public final void acquire(int arg) {
+        //首先调用tryAcquire方法来再一次尝试获取锁，如果成功则返回，否则执行acquireQueued方法
         // tryAcquire 由子类实现本身不会阻塞线程，如果返回 true,则线程继续，
         // 如果返回 false 那么就 加入阻塞队列阻塞线程，并等待前继结点释放锁。
         if (!tryAcquire(arg)) {
