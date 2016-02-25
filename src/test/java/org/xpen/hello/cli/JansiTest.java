@@ -7,6 +7,7 @@ import org.junit.Test;
 
 /**
  * 演示Jansi让控制台输出彩色文字
+ * (必须写到main方法然后在cmd下运行才可看到效果)
  *
  */
 public class JansiTest {

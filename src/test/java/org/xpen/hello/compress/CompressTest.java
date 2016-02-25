@@ -40,7 +40,7 @@ public class CompressTest {
         zip_output.close();
     }
     
-    @Test
+    //@Test
     public void testGenBigFile() throws Exception {
         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("c:/temp/big1.dat")));
         for (int i = 0; i < 500000000; i++) {
@@ -50,7 +50,7 @@ public class CompressTest {
     }
     
     //测试压缩超过4G的文件
-    @Test
+    //@Test
     public void testCompressBig() throws Exception {
         /* Create Output Stream that will have final zip files */
         //OutputStream zip_output = new FileOutputStream(new File("c:/temp/big1.dat.zip"));
