@@ -179,6 +179,16 @@
         
         <!-- graph -->
         <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-demo</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.monkeysintown</groupId>
             <artifactId>jgraphx</artifactId>
             <version>3.3.1.1</version>
