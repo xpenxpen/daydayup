@@ -35,6 +35,18 @@
             <version>3.6.1</version>
         </dependency>
         
+        <!-- Log -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.13</version>            
+        </dependency>
+        
         <!-- bean -->
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
@@ -244,7 +256,33 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        
+        <!-- Spark -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <!-- Storm -->
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <version>1.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <!-- TEST begin -->
         <dependency>
             <groupId>junit</groupId>
