@@ -28,7 +28,7 @@ import org.xpen.hello.bean.orika.dto.PersonDto;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:library-beans.xml"})
+@ContextConfiguration(locations = {"classpath:orika/library-beans.xml"})
 public class OrikaExample extends AbstractJUnit4SpringContextTests {
 
     

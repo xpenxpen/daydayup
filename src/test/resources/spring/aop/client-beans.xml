@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd
+      http://www.springframework.org/schema/util
+      http://www.springframework.org/schema/util/spring-util.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop.xsd"
+    default-autowire="constructor">
+
+    <bean id="accountService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:8080/remoting/AccountService" />
+        <property name="serviceInterface" value="org.xpen.hello.spring.aop.AccountService" />
+    </bean>
+    
+    <bean id="exceptionTranslatorInterceptor" class="org.xpen.hello.spring.aop.ServiceExceptionTranslatorInterceptor"/>
+    
+    <!--<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames" value="accountService" />
+        <property name="order" value="1" />
+        <property name="interceptorNames">
+            <list>
+                <value>exceptionTranslatorInterceptor</value>
+            </list>
+        </property>
+    </bean>-->
+    <aop:config>
+        <aop:pointcut id="accountServicePointcut"
+            expression="execution(* org.xpen.hello.spring.aop.AccountService.*(..))" />
+        <aop:advisor pointcut-ref="accountServicePointcut" advice-ref="exceptionTranslatorInterceptor" order="1"/>
+    </aop:config>
+</beans>

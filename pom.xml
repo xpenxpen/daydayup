@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lib.spring.version>4.3.2.RELEASE</lib.spring.version>
         <lib.lucene.version>6.1.0</lib.lucene.version>
+        <lib.aspectj.version>1.8.9</lib.aspectj.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,26 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${lib.spring.version}</version>
+        </dependency>
+        
+        <!-- spring AOP -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${lib.aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${lib.aspectj.version}</version>
+        </dependency>
+        
+        <!-- spring WEB -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${lib.spring.version}</version>
         </dependency>
         <!-- SPRING end -->
