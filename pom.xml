@@ -304,6 +304,20 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- OCR -->
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>tesseract</artifactId>
+            <version>3.04.01-1.2</version>
+        </dependency>
+        
+        <!-- OpenCV -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>1.2</version>
+        </dependency>
+        
         <!-- TEST begin -->
         <dependency>
             <groupId>junit</groupId>
