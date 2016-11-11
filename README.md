@@ -10,7 +10,7 @@
 - org.xpen.chess.tictactoe tictactoe游戏的人工智能人机博弈（alpha-beta,minimax,查表法）
 - org.xpen.coderead.java.util.concurrent jdk源码阅读注释
 - org.xpen.concurrent CLH 自旋锁,AbstractQueuedSynchronizer类研究
-- org.xpen.cv.opencv.FaceDetection opencv人脸识别
+- org.xpen.cv.opencv.FaceDetection opencv人脸识别,flandmark眼睛，鼻子，嘴检测
 - org.xpen.cv.tesseract.TesseractTest tesseract文字识别
 - org.xpen.graph 演示jgraphx
 - org.xpen.hello.bytecode 动态代理方案性能对比,比较了JDK, cglib, javassist proxy, javassist字节码, asm五种方式
