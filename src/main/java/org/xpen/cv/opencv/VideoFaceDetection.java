@@ -40,6 +40,7 @@ import static org.bytedeco.javacpp.opencv_videoio.cvCreateAVIWriter;
 import static org.bytedeco.javacpp.opencv_videoio.cvGetCaptureProperty;
 import static org.bytedeco.javacpp.opencv_videoio.cvQueryFrame;
 import static org.bytedeco.javacpp.opencv_videoio.cvReleaseCapture;
+import static org.bytedeco.javacpp.opencv_videoio.cvReleaseVideoWriter;
 import static org.bytedeco.javacpp.opencv_videoio.cvWriteFrame;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -64,9 +65,8 @@ import org.bytedeco.javacpp.opencv_videoio.CvVideoWriter;
  * 
  * 
  * eclipse里无法运行，需要到命令行下运行
- * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.VideoFaceDetection -Dexec.args="D:/git/opensource/flandmark/data/seq_bruges04_300frames.avi" -Dmaven.test.skip=true
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.VideoFaceDetection -Dexec.args="D:/git/opensource/flandmark/data/seq_bruges04_300frames.avi D:/git/opensource/flandmark/data/seq_bruges04_300frames-marked.avi" -Dmaven.test.skip=true
- * (后面一种写入文件的方法测试没有成功)
+ * 
  *
  */
 public class VideoFaceDetection {
@@ -183,6 +183,7 @@ public class VideoFaceDetection {
 
         cvReleaseCapture(camera);
         cvReleaseHaarClassifierCascade(cascade);
+        cvReleaseVideoWriter(writer);
         cvDestroyWindow(flandmark_window);
         flandmark_free(model);
 
