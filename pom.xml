@@ -220,12 +220,12 @@
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
-            <version>0.9.2</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-demo</artifactId>
-            <version>0.9.2</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.monkeysintown</groupId>
