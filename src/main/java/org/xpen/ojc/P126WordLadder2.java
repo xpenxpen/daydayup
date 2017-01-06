@@ -46,16 +46,19 @@ public class P126WordLadder2 {
             
             int leftIndex = 0;
             int rightIndex = 1;
-            while (leftIndex < wordsToSort.size() && rightIndex < wordsToSort.size()) {
+            while (leftIndex < wordsToSort.size()-1) {
                 String left = wordsToSort.get(leftIndex);
                 String right = wordsToSort.get(rightIndex);
                 if (left.substring(0, size - 1).equals(right.substring(0, size - 1))) {
                     G.addEdge(sortedWords.get(left), sortedWords.get(right));
                     rightIndex++;
+                    if (rightIndex==wordsToSort.size()) {
+                        leftIndex++;
+                        rightIndex = leftIndex+1;
+                    }
                 } else {
                     leftIndex++;
                     rightIndex = leftIndex+1;
-                    continue;
                 }
             }
 
@@ -77,33 +80,21 @@ public class P126WordLadder2 {
          String to   = endWord;
 
          BreadthFirstPaths bfs = new BreadthFirstPaths(G, words.get(from));
+         List<List<String>> answer = new ArrayList<List<String>>();
          if (bfs.hasPathTo(words.get(to))) {
-             List<List<String>> answer = new ArrayList<List<String>>();
-             List<String> answer1 = new ArrayList<String>();
-             Stack<List<Integer>> pathTo = bfs.pathTo(words.get(to));
-             
-             //end must be single 
-             Integer endItem = pathTo.pop().get(0);
-             answer1.add(reverseDict.get(endItem));
-             answer.add(answer1);
-             
-             while (!pathTo.empty()) {
-                 List<Integer> popItem = pathTo.pop();
-                 if (popItem.size() == 1) {
-                     for (int i = 0; i < answer.size(); i++) {
-                         answer.get(i).add(reverseDict.get(popItem.get(0)));
-                     }
-                 } else {
-                     for (int i = 0; i < popItem.size(); i++) {
-                         List<String> answerSmall = new ArrayList<String>();
-                         answerSmall.addAll(answer1);
-                         answerSmall.add(reverseDict.get(popItem.get(i)));
-                     }
+             List<Stack<Integer>> pathTo = bfs.pathTo(words.get(to));
+             for (Stack<Integer> stack : pathTo) {
+                 List<String> list = new ArrayList<String>();
+                 answer.add(list);
+                 while (!stack.isEmpty()) {
+                     Integer pop = stack.pop();
+                     String str = reverseDict.get(pop);
+                     list.add(str);
                  }
              }
          }
         
-        return new ArrayList();
+        return answer;
     }
     
     private String shiftWord(String word, int totalLength, int shiftLength) {
@@ -212,17 +203,42 @@ public class P126WordLadder2 {
             return distTo[v];
         }
 
-        public Stack<List<Integer>> pathTo(int v) {
+        public List<Stack<Integer>> pathTo(int v) {
             if (!hasPathTo(v)) return null;
-            Stack<List<Integer>> path = new Stack<List<Integer>>();
-            int x;
-            for (x = v; distTo[x] != 0; ) {
-                List previousVetexList = edgeTo[x];
-                path.push(previousVetexList);
+            
+            int dist = distTo[v];
+            
+            List<Stack<Integer>> path = new ArrayList<Stack<Integer>>();
+            Stack<Integer> stack = new Stack<Integer>();
+            stack.push(v);
+            path.add(stack);
+            
+            for (int i = 0; i < dist; i++) {
+                int pathSize = path.size();
+                for (int j = 0; j < pathSize; j++) {
+                    Stack<Integer> currentStack = path.get(j);
+                    Integer top = currentStack.peek();
+                    //之前的广度优先搜索中已经把所有边都记录下来了
+                    List previousVetexList = edgeTo[top];
+                    
+                    //DO COPY,如果有多条路径，则复制
+                    for (int k = 0; k < previousVetexList.size(); k++) {
+                        Stack<Integer> newStack;
+                        if (k>0) {
+                            newStack = new Stack<Integer>();
+                            for (int m = 0; m < currentStack.size()-1; m++) {
+                                newStack.add(currentStack.get(m));
+                            }
+                            
+                            path.add(newStack);
+                        } else {
+                            newStack = currentStack;
+                        }
+                        newStack.push((Integer)previousVetexList.get(k));
+                    }
+                }
             }
-            List head = new ArrayList<Integer>();
-            head.add(x);
-            path.push(head);
+            
             return path;
         }
 
@@ -239,6 +255,16 @@ public class P126WordLadder2 {
         String endWord = "cog";
         Set wordList = new HashSet(Arrays.asList(
                 "hot","dot","dog","lot","log"));
+//        String beginWord = "qa";
+//        String endWord = "sq";
+//        Set wordList = new HashSet(Arrays.asList(
+//                "si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"
+//                ));
+//        String beginWord = "aa";
+//        String endWord = "zz";
+//        Set wordList = new HashSet(Arrays.asList(
+//                "ab","zb","ac","zc"
+//                ));
                         
         for (int i=0; i<1;i++) {
         System.out.println(main.findLadders(beginWord, endWord, wordList));

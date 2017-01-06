@@ -46,16 +46,19 @@ public class P127WordLadder {
             
             int leftIndex = 0;
             int rightIndex = 1;
-            while (leftIndex < wordsToSort.size() && rightIndex < wordsToSort.size()) {
+            while (leftIndex < wordsToSort.size()-1) {
                 String left = wordsToSort.get(leftIndex);
                 String right = wordsToSort.get(rightIndex);
                 if (left.substring(0, size - 1).equals(right.substring(0, size - 1))) {
                     G.addEdge(sortedWords.get(left), sortedWords.get(right));
                     rightIndex++;
+                    if (rightIndex==wordsToSort.size()) {
+                        leftIndex++;
+                        rightIndex = leftIndex+1;
+                    }
                 } else {
                     leftIndex++;
                     rightIndex = leftIndex+1;
-                    continue;
                 }
             }
 
@@ -213,9 +216,9 @@ public class P127WordLadder {
 //        Set wordList = new HashSet(Arrays.asList(
 //                "hot","dot","dog","lot","log"));
                         
-        for (int i=0; i<1000;i++) {
+        //for (int i=0; i<1000;i++) {
         System.out.println(main.ladderLength(beginWord, endWord, wordList));
-        }
+        //}
     }
 
 }
