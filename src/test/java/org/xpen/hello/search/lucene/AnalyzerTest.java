@@ -1,6 +1,7 @@
 package org.xpen.hello.search.lucene;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.core.StopAnalyzer;
@@ -32,8 +33,9 @@ public class AnalyzerTest {
 		Analyzer a2 = new StopAnalyzer();
 		Analyzer a3 = new SimpleAnalyzer();
 		Analyzer a4 = new WhitespaceAnalyzer();
-		Analyzer a5 = new MMSegAnalyzer();
-		Analyzer a6 = new SmartChineseAnalyzer();
+        Analyzer a5 = new CJKAnalyzer();
+		Analyzer a6 = new MMSegAnalyzer();
+		Analyzer a7 = new SmartChineseAnalyzer();
 		String txt = "我来自中国上海华东师范大学。我不研究生命科学。我不是研究生。";
 		
 		AnalyzerUtils.displayToken(txt, a1);
@@ -42,6 +44,7 @@ public class AnalyzerTest {
 		AnalyzerUtils.displayToken(txt, a4);
 		AnalyzerUtils.displayToken(txt, a5);
         AnalyzerUtils.displayToken(txt, a6);
+        AnalyzerUtils.displayToken(txt, a7);
 	}
 	
 	@Test
