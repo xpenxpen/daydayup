@@ -132,16 +132,16 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
-            <version>1.1</version>
+            <version>2.1</version>
             <exclusions>
-                <exclusion>
+                <!--<exclusion>
                     <groupId>org.apache.avalon.framework</groupId>
                     <artifactId>avalon-framework-api</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.apache.avalon.framework</groupId>
                     <artifactId>avalon-framework-impl</artifactId>
-                </exclusion>
+                </exclusion>-->
                 <exclusion>
                     <groupId>xalan</groupId>
                     <artifactId>xalan</artifactId>
@@ -149,7 +149,7 @@
             </exclusions>
         </dependency>
         <!-- these two are to correct issues in fop dependency -->
-        <dependency>
+        <!--<dependency>
             <groupId>avalon-framework</groupId>
             <artifactId>avalon-framework-api</artifactId>
             <version>4.2.0</version>
@@ -158,7 +158,7 @@
             <groupId>avalon-framework</groupId>
             <artifactId>avalon-framework-impl</artifactId>
             <version>4.2.0</version>
-        </dependency>
+        </dependency>-->
         
         <!-- flying-saucer -->
         <dependency>
@@ -302,12 +302,12 @@
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
-                    <artifactId>log4j</artifactId>
                     <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
                     <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -318,7 +318,26 @@
             <artifactId>storm-core</artifactId>
             <version>1.0.1</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         
         <!-- OCR -->
         <dependency>

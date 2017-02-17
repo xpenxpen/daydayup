@@ -1,8 +1,10 @@
 package org.xpen.hello.pdf;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import com.itextpdf.text.Chunk;
@@ -19,8 +21,8 @@ import com.itextpdf.text.pdf.PdfWriter;
  */
 public class ItextTest {
 
-    public static final String RESULT1 = "target/hello.pdf";
-    public static final String RESULT2 = "target/cjk_example.pdf";
+    public static final String RESULT1 = "target/pdf/hello.pdf";
+    public static final String RESULT2 = "target/pdf/cjk_example.pdf";
     
     /** Movies, their director and original title */
     public static final String[][] MOVIES = {
@@ -47,6 +49,7 @@ public class ItextTest {
     //演示用IText生成一个简单的pdf文件
     @Test
     public void testCreatePdf() throws DocumentException, IOException {
+        FileUtils.forceMkdirParent(new File(RESULT1));
         // step 1
         Document document = new Document();
         // step 2
@@ -62,6 +65,7 @@ public class ItextTest {
     //演示用IText生成一个带有中/日/韩文的pdf
     @Test
     public void testCjk() throws DocumentException, IOException {
+        FileUtils.forceMkdirParent(new File(RESULT2));
         // step 1
         Document document = new Document();
         // step 2

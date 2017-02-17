@@ -12,7 +12,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.logging.log4j.core.util.FileUtils;
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -97,7 +97,7 @@ public class DomTest {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             File outFile = new File(outfilepath);
-            FileUtils.mkdir(outFile.getParentFile(), true);
+            FileUtils.forceMkdirParent(outFile);
             StreamResult result = new StreamResult(outFile);
             transformer.transform(source, result);
 

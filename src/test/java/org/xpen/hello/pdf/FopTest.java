@@ -12,6 +12,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
@@ -27,12 +28,14 @@ public class FopTest {
     @Test
     public void testChinese() throws Exception {
         
-        // Step 1: Construct a FopFactory
-        FopFactory fopFactory = FopFactory.newInstance();
-        fopFactory.setUserConfig(new File("src/test/resources/pdf/fop/fop.xconf"));
+        // Step 1: Construct a FopFactory by specifying a reference to the configuration file
+        // (reuse if you plan to render multiple documents!)
+        FopFactory fopFactory = FopFactory.newInstance(new File("src/test/resources/pdf/fop/fop.xconf"));
 
         // Step 2: Set up output stream.
-        OutputStream out = new BufferedOutputStream(new FileOutputStream(new File("target/abc.pdf")));
+        File outFile = new File("target/pdf/abc.pdf");
+        FileUtils.forceMkdirParent(outFile);
+        OutputStream out = new BufferedOutputStream(new FileOutputStream(outFile));
 
         // Step 3: Construct fop with desired output format
         Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, out);
