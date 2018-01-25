@@ -9,7 +9,7 @@ import org.bytedeco.javacpp.tesseract.TessBaseAPI;
  * 演示tesseract文字识别
  * 需要下载tessdata https://github.com/tesseract-ocr/tessdata
  * 然后设置TESSDATA_PREFIX
- * eclipse里无法运行，需要到命令行下运行
+ * javacv1.4后eclipse里已经可以直接运行，或者可以到命令行下运行
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.tesseract.TesseractTest -Dmaven.test.skip=true
  * 
  *

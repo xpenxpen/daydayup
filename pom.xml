@@ -12,9 +12,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lib.spring.version>4.3.6.RELEASE</lib.spring.version>
+        <lib.spring.version>4.3.13.RELEASE</lib.spring.version>
         <lib.lucene.version>6.4.1</lib.lucene.version>
         <lib.aspectj.version>1.8.10</lib.aspectj.version>
+        <lib.javacv.version>1.4</lib.javacv.version>
+        <lib.tesseract.version>3.05.01-1.4</lib.tesseract.version>
     </properties>
 
     <dependencies>
@@ -337,20 +339,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        
-        <!-- OCR -->
-        <dependency>
-            <groupId>org.bytedeco.javacpp-presets</groupId>
-            <artifactId>tesseract</artifactId>
-            <version>3.04.01-1.2</version>
-        </dependency>
         
         <!-- OpenCV -->
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacv-platform</artifactId>
-            <version>1.4</version>
+            <version>${lib.javacv.version}</version>
+        </dependency>
+        
+        <!-- OCR -->
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>tesseract-platform</artifactId>
+            <version>${lib.tesseract.version}</version>
         </dependency>
         
         <!-- TEST begin -->
