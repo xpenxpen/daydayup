@@ -349,8 +349,8 @@
         <!-- OpenCV -->
         <dependency>
             <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
-            <version>1.2</version>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.4</version>
         </dependency>
         
         <!-- TEST begin -->

@@ -44,7 +44,7 @@ import org.bytedeco.javacpp.opencv_objdetect.CvHaarClassifierCascade;
  * 出处 http://fivedots.coe.psu.ac.th/~ad/jg/nui07/index.html
  * @author Andrew Davison
  * 
- * eclipse里无法运行，需要到命令行下运行
+ * javacv1.4后eclipse里已经可以直接运行，或者可以到命令行下运行
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.FaceDetection -Dmaven.test.skip=true
  * 
  *

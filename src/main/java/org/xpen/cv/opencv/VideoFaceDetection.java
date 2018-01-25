@@ -64,7 +64,7 @@ import org.bytedeco.javacpp.opencv_videoio.CvVideoWriter;
  * 需要下载xvid解码器并安装 https://www.xvid.com/
  * 
  * 
- * eclipse里无法运行，需要到命令行下运行
+ * javacv1.4后eclipse里已经可以直接运行，或者可以到命令行下运行
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.VideoFaceDetection -Dexec.args="D:/git/opensource/flandmark/data/seq_bruges04_300frames.avi D:/git/opensource/flandmark/data/seq_bruges04_300frames-marked.avi" -Dmaven.test.skip=true
  * 
  *
