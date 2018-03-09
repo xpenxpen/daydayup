@@ -14,7 +14,13 @@ import org.apache.spark.api.java.function.PairFunction;
 import scala.Tuple2;
 
 /**
- * 无法直接运行，需submit到spark下运行
+ * 可以直接在eclipse里运行了，无需submit到spark下运行
+ * 要求：
+ * 1.配置HADOOP_HOME环境变量,将hadoop.dll,winutils.exe两个文件放入HADOOP_HOME/bin
+ * 2.eclipse->Run as->Environment加入HADOOP_HOME
+ * 
+ * 每次运行需要手工删除"target/WordCount.txt"目录
+ * 运行完检查结果target/WordCount.txt/part-00000
  *
  */
 public class WordCount {
@@ -24,7 +30,7 @@ public class WordCount {
         String inputFile = "src/test/resources/spark/word.txt";
         String outputFile = "target/WordCount.txt";
         // Create a Java Spark Context.
-        SparkConf conf = new SparkConf().setAppName("wordCount");
+        SparkConf conf = new SparkConf().setAppName("wordCount").setMaster("local[2]");
         JavaSparkContext sc = new JavaSparkContext(conf);
         // Load our input data.
         JavaRDD<String> input = sc.textFile(inputFile);
