@@ -23,7 +23,7 @@ import org.junit.Test;
 public class SimplexTest {
 
     @Test
-    public void testHousePrice() throws Exception {
+    public void testBeer() throws Exception {
         /*
                     求13A+23B的最大值
         5A  + 15B <= 480

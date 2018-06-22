@@ -18,6 +18,7 @@ import scala.Tuple2;
  * 要求：
  * 1.配置HADOOP_HOME环境变量,将hadoop.dll,winutils.exe两个文件放入HADOOP_HOME/bin
  * 2.eclipse->Run as->Environment加入HADOOP_HOME
+ * 3.JVM参数 -Xms256m -Xmx1024m
  * 
  * 每次运行需要手工删除"target/WordCount.txt"目录
  * 运行完检查结果target/WordCount.txt/part-00000

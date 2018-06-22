@@ -17,6 +17,7 @@
         <lib.aspectj.version>1.8.10</lib.aspectj.version>
         <lib.javacv.version>1.4</lib.javacv.version>
         <lib.tesseract.version>3.05.01-1.4</lib.tesseract.version>
+        <lib.spark.version>2.0.0</lib.spark.version>
     </properties>
 
     <dependencies>
@@ -301,7 +302,7 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
-            <version>2.0.0</version>
+            <version>${lib.spark.version}</version>
             <scope>provided</scope>
             <!-- 暂时disable，因为spark需要 -->
             <!-- <exclusions>
@@ -314,6 +315,16 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>${lib.spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_2.11</artifactId>
+            <version>${lib.spark.version}</version>
         </dependency>
         
         <!-- Storm -->
