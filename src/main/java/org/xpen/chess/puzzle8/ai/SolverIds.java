@@ -6,20 +6,14 @@ import java.util.Set;
 
 import org.xpen.chess.puzzle8.Board;
 
-//IDA*搜索(不占用内存)
-public class SolverIdaStar2 extends Solver {
-
-    //A* priority queue.
-    //private PriorityQueue <Board> queue;
+//IDS搜索(Iterative Deepening Search)(不占用内存)
+public class SolverIds extends Solver {
 	
     // The closed state set.
 	private Set<Board> closed;
-	
-	//boolean solved = false;
-	//Board answer;
 
 	// find a solution to the initial board
-	public SolverIdaStar2(Board initial) {
+	public SolverIds(Board initial) {
 		this.initial = initial;
 		
 		closed = new HashSet<Board>();

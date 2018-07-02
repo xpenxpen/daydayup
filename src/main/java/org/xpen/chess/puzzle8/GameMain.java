@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.xpen.chess.puzzle8.ai.Solver;
 import org.xpen.chess.puzzle8.ai.SolverAStar;
 import org.xpen.chess.puzzle8.ai.SolverIdaStar;
-import org.xpen.chess.puzzle8.ai.SolverIdaStar2;
+import org.xpen.chess.puzzle8.ai.SolverIds;
 import org.xpen.chess.puzzle8.ai.SolverWidthFirst;
 
 public class GameMain {
@@ -24,10 +24,10 @@ public class GameMain {
         
         //Initialize board
         byte[] initial3 = { 8,2,4,3,5,6,7,1,0 };
-        byte[] initial4 = { 8,2,4,3,5,6,7,1,0,9,10,11,12,13,14,15 };
-        ///byte[] initial4 = { 1,6,13,4,12,11,5,3,2,9,8,14,10,7,15,0 };
-        ////byte[] initial4 = { 13,14,4,10,9,6,15,12,11,8,5,1,7,3,2,0};
-        //byte[] initial4 = { 8,2,6,4,5,7,10,11,9,12,0,13,14,3,1,15};
+        //byte[] initial4 = { 8,2,4,3,5,6,7,1,0,9,10,11,12,13,14,15 };  //82层都解不出来
+        //byte[] initial4 = { 1,6,13,4,12,11,5,3,2,9,8,14,10,7,15,0 };//step 56
+        byte[] initial4 = { 13,14,4,10,9,6,15,12,11,8,5,1,7,3,2,0}; //step 66
+        //byte[] initial4 = { 8,2,6,4,5,7,10,11,9,12,0,13,14,3,1,15}; //step 60
         byte[] initial = null;
         Board init = null;
         
@@ -38,6 +38,8 @@ public class GameMain {
                 initial = initial4;
             }
             init = new Board(dimension, initial);
+            boolean solvable = init.isSolvable();
+            System.out.println("solvable="+solvable);
             
         } else if (mode == 1) {
             
@@ -76,7 +78,7 @@ public class GameMain {
         System.out.println("1--Breadth first");
         System.out.println("2--A*");
         System.out.println("3--IDA*");
-        System.out.println("4--IDA*(save memory)");
+        System.out.println("4--Iterative Deepening Search(save memory)");
         System.out.print("Choose algorithm:");
         int algorithm = input.nextInt();
         
@@ -89,7 +91,7 @@ public class GameMain {
         } else if (algorithm == 3) {
             solver = new SolverIdaStar(init);
         } else if (algorithm == 4) {
-            solver = new SolverIdaStar2(init);
+            solver = new SolverIds(init);
         } else {
             System.out.println("Bad Algorithms");
             return;
