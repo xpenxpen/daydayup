@@ -15,9 +15,11 @@
         <lib.spring.version>4.3.13.RELEASE</lib.spring.version>
         <lib.lucene.version>6.4.1</lib.lucene.version>
         <lib.aspectj.version>1.8.10</lib.aspectj.version>
-        <lib.javacv.version>1.4</lib.javacv.version>
-        <lib.tesseract.version>3.05.01-1.4</lib.tesseract.version>
-        <lib.spark.version>2.0.0</lib.spark.version>
+        <lib.javacpp.version>1.4.3</lib.javacpp.version>
+        <lib.javacv.version>1.4.3</lib.javacv.version>
+        <lib.tesseract.version>4.0.0-rc2-1.4.3</lib.tesseract.version>
+        <lib.tensorflow.version>1.11.0-1.4.3</lib.tensorflow.version>
+        <lib.spark.version>2.4.0</lib.spark.version>
     </properties>
 
     <dependencies>
@@ -371,6 +373,18 @@
             <artifactId>tesseract-platform</artifactId>
             <version>${lib.tesseract.version}</version>
         </dependency>
+        
+        <!-- tensorflow -->
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>tensorflow-platform</artifactId>
+            <version>${lib.tensorflow.version}</version>
+        </dependency>
+        <!-- <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow</artifactId>
+            <version>${lib.tensorflow.version}</version>
+        </dependency>-->
         
         <dependency>
             <groupId>org.unbescape</groupId>

@@ -46,6 +46,7 @@ import org.bytedeco.javacpp.opencv_objdetect.CvHaarClassifierCascade;
  * 
  * javacv1.4后eclipse里已经可以直接运行，或者可以到命令行下运行
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.FaceDetection -Dmaven.test.skip=true
+ * javacv1.4.1会崩溃，改用javacv1.4即可
  * 
  *
  */
