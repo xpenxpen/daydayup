@@ -50,12 +50,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.25</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>            
+            <version>1.2.3</version>            
         </dependency>
         
         <!-- bean -->
@@ -235,6 +235,13 @@
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-demo</artifactId>
             <version>1.0.0</version>
+            <!-- 暂时disable，因为spark需要特定版本的antlr -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.monkeysintown</groupId>
