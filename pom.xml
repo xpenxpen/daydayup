@@ -399,6 +399,13 @@
             <version>1.1.5.RELEASE</version>
         </dependency>
         
+        <!-- Serialization -->
+        <dependency>
+           <groupId>com.esotericsoftware</groupId>
+           <artifactId>kryo</artifactId>
+           <version>5.0.0-RC1</version>
+        </dependency>
+
         <!-- TEST begin -->
         <dependency>
             <groupId>junit</groupId>
