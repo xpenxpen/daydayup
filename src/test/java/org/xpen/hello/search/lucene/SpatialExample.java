@@ -16,9 +16,9 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queries.function.ValueSource;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.DoubleValuesSource;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Sort;
@@ -138,7 +138,7 @@ public class SpatialExample {
         // note: SpatialArgs can be parsed from a string
         Point pt = ctx.makePoint(121.41791, 31.21867);
         // the distance in km
-        ValueSource valueSource = strategy.makeDistanceValueSource(pt, DistanceUtils.DEG_TO_KM);
+        DoubleValuesSource valueSource = strategy.makeDistanceValueSource(pt, DistanceUtils.DEG_TO_KM);
         //按距离由近及远排序
         Sort distSort = new Sort(valueSource.getSortField(false)).rewrite(indexSearcher); // false=asc                                                                                         dist
                                                                                           

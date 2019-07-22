@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lib.spring.version>4.3.13.RELEASE</lib.spring.version>
-        <lib.lucene.version>6.4.1</lib.lucene.version>
+        <lib.spring.version>5.1.3.RELEASE</lib.spring.version>
+        <lib.lucene.version>7.7.0</lib.lucene.version>
         <lib.aspectj.version>1.8.10</lib.aspectj.version>
         <lib.javacpp.version>1.4.3</lib.javacpp.version>
         <lib.javacv.version>1.4.3</lib.javacv.version>
@@ -404,6 +404,13 @@
            <groupId>com.esotericsoftware</groupId>
            <artifactId>kryo</artifactId>
            <version>5.0.0-RC1</version>
+        </dependency>
+        
+        <!-- metrics -->
+        <dependency>
+           <groupId>io.dropwizard.metrics</groupId>
+           <artifactId>metrics-core</artifactId>
+           <version>4.0.5</version>
         </dependency>
 
         <!-- TEST begin -->
