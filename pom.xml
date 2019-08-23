@@ -12,14 +12,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lib.spring.version>5.1.3.RELEASE</lib.spring.version>
-        <lib.lucene.version>7.7.0</lib.lucene.version>
-        <lib.aspectj.version>1.8.10</lib.aspectj.version>
-        <lib.javacpp.version>1.4.3</lib.javacpp.version>
-        <lib.javacv.version>1.4.3</lib.javacv.version>
-        <lib.tesseract.version>4.0.0-rc2-1.4.3</lib.tesseract.version>
-        <lib.tensorflow.version>1.11.0-1.4.3</lib.tensorflow.version>
-        <lib.spark.version>2.4.0</lib.spark.version>
+        <spring.version>5.1.8.RELEASE</spring.version>
+        <lucene.version>7.7.0</lucene.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <javacpp.version>1.4.3</javacpp.version>
+        <javacv.version>1.4.3</javacv.version>
+        <tesseract.version>4.0.0-rc2-1.4.3</tesseract.version>
+        <tensorflow.version>1.11.0-1.4.3</tensorflow.version>
+        <spark.version>2.4.0</spark.version>
+        <hadoop.version>2.7.7</hadoop.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
+        <curator.version>4.2.0</curator.version>
     </properties>
 
     <dependencies>
@@ -28,12 +31,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
+            <version>3.9</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
+            <version>2.6</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -95,27 +98,27 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${lib.spring.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         
         <!-- spring AOP -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>${lib.aspectj.version}</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${lib.aspectj.version}</version>
+            <version>${aspectj.version}</version>
         </dependency>
         
         <!-- spring WEB -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${lib.spring.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <!-- SPRING end -->
         
@@ -273,27 +276,27 @@
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
-            <version>${lib.lucene.version}</version>
+            <version>${lucene.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
-            <version>${lib.lucene.version}</version>
+            <version>${lucene.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-spatial</artifactId>
-            <version>${lib.lucene.version}</version>
+            <version>${lucene.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-spatial-extras</artifactId>
-            <version>${lib.lucene.version}</version>
+            <version>${lucene.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${lib.lucene.version}</version>
+            <version>${lucene.version}</version>
         </dependency>
         <dependency>
             <groupId>com.chenlb.mmseg4j</groupId>
@@ -316,7 +319,7 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
-            <version>${lib.spark.version}</version>
+            <version>${spark.version}</version>
             <scope>provided</scope>
             <!-- 暂时disable，因为spark需要 -->
             <!-- <exclusions>
@@ -333,14 +336,20 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.11</artifactId>
-            <version>${lib.spark.version}</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_2.11</artifactId>
-            <version>${lib.spark.version}</version>
+            <version>${spark.version}</version>
         </dependency>
-        
+        <!--临时加入解决spark自带hadoop-client版本低导致guava版本低的问题 -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
         <!-- Storm -->
         <dependency>
             <groupId>org.apache.storm</groupId>
@@ -371,26 +380,26 @@
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacv-platform</artifactId>
-            <version>${lib.javacv.version}</version>
+            <version>${javacv.version}</version>
         </dependency>
         
         <!-- OCR -->
         <dependency>
             <groupId>org.bytedeco.javacpp-presets</groupId>
             <artifactId>tesseract-platform</artifactId>
-            <version>${lib.tesseract.version}</version>
+            <version>${tesseract.version}</version>
         </dependency>
         
         <!-- tensorflow -->
         <dependency>
             <groupId>org.bytedeco.javacpp-presets</groupId>
             <artifactId>tensorflow-platform</artifactId>
-            <version>${lib.tensorflow.version}</version>
+            <version>${tensorflow.version}</version>
         </dependency>
         <!-- <dependency>
             <groupId>org.tensorflow</groupId>
             <artifactId>tensorflow</artifactId>
-            <version>${lib.tensorflow.version}</version>
+            <version>${tensorflow.version}</version>
         </dependency>-->
         
         <dependency>
@@ -412,6 +421,29 @@
            <artifactId>metrics-core</artifactId>
            <version>4.0.5</version>
         </dependency>
+        
+        <!-- zookeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${curator.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- TEST begin -->
         <dependency>
@@ -423,7 +455,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${lib.spring.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- TEST end -->
