@@ -23,6 +23,7 @@
         <hadoop.version>2.7.7</hadoop.version>
         <zookeeper.version>3.5.5</zookeeper.version>
         <curator.version>4.2.0</curator.version>
+        <metrics.version>4.1.0</metrics.version>
     </properties>
 
     <dependencies>
@@ -419,9 +420,14 @@
         <dependency>
            <groupId>io.dropwizard.metrics</groupId>
            <artifactId>metrics-core</artifactId>
-           <version>4.0.5</version>
+           <version>${metrics.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-jmx</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+
         <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>

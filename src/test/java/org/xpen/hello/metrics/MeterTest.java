@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.jmx.JmxReporter;
 
 /**
  * metrics演示
@@ -22,7 +23,7 @@ public class MeterTest {
     public void testMeter() throws Exception {
         startReport();
         Meter requests = metrics.meter("requests");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             requests.mark(1000);
             wait1Seconds();
         }
@@ -34,6 +35,12 @@ public class MeterTest {
             .convertDurationsTo(TimeUnit.MILLISECONDS)
             .build();
         reporter.start(3, TimeUnit.SECONDS);
+        
+        JmxReporter jmxReporter = JmxReporter.forRegistry(metrics)
+                .convertRatesTo(TimeUnit.SECONDS)
+                .convertDurationsTo(TimeUnit.MILLISECONDS)
+                .build();
+        jmxReporter.start();
     }
 
     private static void wait1Seconds() {
