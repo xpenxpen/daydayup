@@ -1,37 +1,29 @@
 package org.xpen.cv.opencv;
 
-import static org.bytedeco.javacpp.flandmark.flandmark_detect;
-import static org.bytedeco.javacpp.flandmark.flandmark_free;
-import static org.bytedeco.javacpp.flandmark.flandmark_init;
-import static org.bytedeco.javacpp.helper.opencv_core.CV_RGB;
-import static org.bytedeco.javacpp.helper.opencv_objdetect.cvHaarDetectObjects;
-import static org.bytedeco.javacpp.opencv_core.IPL_DEPTH_8U;
-import static org.bytedeco.javacpp.opencv_core.cvClearMemStorage;
-import static org.bytedeco.javacpp.opencv_core.cvCreateImage;
-import static org.bytedeco.javacpp.opencv_core.cvGetSeqElem;
-import static org.bytedeco.javacpp.opencv_core.cvGetSize;
-import static org.bytedeco.javacpp.opencv_core.cvLoad;
-import static org.bytedeco.javacpp.opencv_core.cvPoint;
-import static org.bytedeco.javacpp.opencv_core.cvReleaseImage;
-import static org.bytedeco.javacpp.opencv_imgcodecs.cvLoadImage;
-import static org.bytedeco.javacpp.opencv_imgcodecs.cvSaveImage;
-import static org.bytedeco.javacpp.opencv_imgproc.CV_AA;
-import static org.bytedeco.javacpp.opencv_imgproc.CV_BGR2GRAY;
-import static org.bytedeco.javacpp.opencv_imgproc.CV_FILLED;
-import static org.bytedeco.javacpp.opencv_imgproc.cvCircle;
-import static org.bytedeco.javacpp.opencv_imgproc.cvCvtColor;
-import static org.bytedeco.javacpp.opencv_imgproc.cvRectangle;
-import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_DO_CANNY_PRUNING;
+import static org.bytedeco.flandmark.global.flandmark.flandmark_detect;
+import static org.bytedeco.flandmark.global.flandmark.flandmark_free;
+import static org.bytedeco.flandmark.global.flandmark.flandmark_init;
+import static org.bytedeco.opencv.global.opencv_core.cvClearMemStorage;
+import static org.bytedeco.opencv.global.opencv_core.cvPoint;
+import static org.bytedeco.opencv.global.opencv_core.cvReleaseImage;
+import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
+import static org.bytedeco.opencv.global.opencv_imgproc.CV_BGR2GRAY;
+import static org.bytedeco.opencv.global.opencv_imgproc.CV_FILLED;
+import static org.bytedeco.opencv.global.opencv_imgproc.cvCircle;
+import static org.bytedeco.opencv.global.opencv_imgproc.cvRectangle;
+import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
+import static org.bytedeco.opencv.helper.opencv_core.CV_RGB;
+import static org.bytedeco.opencv.helper.opencv_imgcodecs.cvSaveImage;
 
+import org.bytedeco.flandmark.FLANDMARK_Model;
 import org.bytedeco.javacpp.Loader;
-import org.bytedeco.javacpp.flandmark.FLANDMARK_Model;
-import org.bytedeco.javacpp.opencv_core.CvMemStorage;
-import org.bytedeco.javacpp.opencv_core.CvRect;
-import org.bytedeco.javacpp.opencv_core.CvScalar;
-import org.bytedeco.javacpp.opencv_core.CvSeq;
-import org.bytedeco.javacpp.opencv_core.IplImage;
-import org.bytedeco.javacpp.opencv_objdetect;
-import org.bytedeco.javacpp.opencv_objdetect.CvHaarClassifierCascade;
+import org.bytedeco.opencv.global.opencv_objdetect;
+import org.bytedeco.opencv.opencv_core.CvMemStorage;
+import org.bytedeco.opencv.opencv_core.IplImage;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Rect;
+import org.bytedeco.opencv.opencv_core.RectVector;
+import org.bytedeco.opencv.opencv_objdetect.CascadeClassifier;
 
 /**
  * 演示opencv人脸识别
@@ -47,6 +39,7 @@ import org.bytedeco.javacpp.opencv_objdetect.CvHaarClassifierCascade;
  * javacv1.4后eclipse里已经可以直接运行，或者可以到命令行下运行
  * mvn package exec:java -Dexec.mainClass=org.xpen.cv.opencv.FaceDetection -Dmaven.test.skip=true
  * javacv1.4.1会崩溃，改用javacv1.4即可
+ * javacv1.5以后改用新API
  * 
  *
  */
@@ -85,11 +78,13 @@ public class FaceDetection {
     private static void go(String fileName) {
         // load an image
         System.out.println("Loading image from " + IN_FOLDER + fileName);
-        IplImage origImg = cvLoadImage(IN_FOLDER + fileName);
+        //IplImage origImg = cvLoadImage(IN_FOLDER + fileName);
+        Mat origImg = imread(IN_FOLDER + fileName);
 
         // convert to grayscale
-        IplImage grayImg = cvCreateImage(cvGetSize(origImg), IPL_DEPTH_8U, 1);
-        cvCvtColor(origImg, grayImg, CV_BGR2GRAY);
+        //IplImage grayImg = cvCreateImage(cvGetSize(origImg), IPL_DEPTH_8U, 1);
+        Mat grayImg = new Mat();
+        cvtColor(origImg, grayImg, CV_BGR2GRAY);
 
         // scale the grayscale (to speed up face detection)
         //IplImage smallImg = IplImage.create(grayImg.width() / SCALE, grayImg.height() / SCALE, IPL_DEPTH_8U, 1);
@@ -102,36 +97,40 @@ public class FaceDetection {
         CvMemStorage storage = CvMemStorage.create();
 
         // instantiate a classifier cascade for face detection
-        CvHaarClassifierCascade cascade = new CvHaarClassifierCascade(cvLoad(CASCADE_FILE));
+        CascadeClassifier faceCascade = new CascadeClassifier(CASCADE_FILE);
         System.out.println("Detecting faces...");
-        CvSeq faces = cvHaarDetectObjects(grayImg, cascade, storage, 1.1, 3, CV_HAAR_DO_CANNY_PRUNING);
-        // CV_HAAR_DO_ROUGH_SEARCH);
-        // 0);
+//        CvSeq faces = cvHaarDetectObjects(grayImg, cascade, storage, 1.1, 3, CASCADE_FIND_BIGGEST_OBJECT | CASCADE_DO_ROUGH_SEARCH);
+//        // 0);
         cvClearMemStorage(storage);
+        
+        RectVector faces = new RectVector();
+        faceCascade.detectMultiScale(grayImg, faces);
 
         // iterate over the faces and draw yellow rectangles around them
-        int total = faces.total();
+        long total = faces.size();
         System.out.println("Found " + total + " face(s)");
+        final int[] bbox = new int[4];
+        final double[] landmarks = new double[2 * model.data().options().M()];
+        IplImage origIplImg = new IplImage(origImg);
+        IplImage grayIplImg = new IplImage(grayImg);
+        
         for (int i = 0; i < total; i++) {
-            CvRect r = new CvRect(cvGetSeqElem(faces, i));
-            cvRectangle(origImg, cvPoint(r.x(), r.y()), // undo the scaling
-                    cvPoint((r.x() + r.width()), (r.y() + r.height())), CvScalar.YELLOW, 6, CV_AA, 0);
+            Rect rect = faces.get(i);
             
-            flandmark(r, grayImg, origImg);
+            flandmark(rect, grayIplImg, origIplImg);
         }
 
         if (total > 0) {
             System.out.println("Saving marked-faces version in " + OUT_FOLDER + fileName);
-            cvSaveImage(OUT_FOLDER + fileName, origImg);
+            cvSaveImage(OUT_FOLDER + fileName, origIplImg);
         }
         
-        cvReleaseImage(origImg);
-        cvReleaseImage(grayImg);
-        //cvReleaseImage(grayImg);
+        //cvReleaseImage(origIplImg);
+        //cvReleaseImage(grayIplImg);
     }
 
     //使用flandmark作进一步的眼睛，鼻子，嘴检测
-    private static void flandmark(CvRect r, IplImage grayImg, IplImage origImg) {
+    private static void flandmark(Rect r, IplImage grayImg, IplImage origImg) {
         int[] bbox = new int[4];
         bbox[0] = r.x();
         bbox[1] = r.y();

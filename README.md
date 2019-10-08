@@ -34,10 +34,12 @@
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
 - org.xpen.hello.search.lucene lucene分词、空间搜索
+- org.xpen.hello.serialize kryo入门
 - org.xpen.hello.spark spark入门
 - org.xpen.hello.spring.aop Spring AOP 拦截 HTTP invoker测试
 - org.xpen.hello.storm storm入门
 - org.xpen.hello.svg 演示Batik输出SVG
 - org.xpen.hello.xml.decentxml 演示decentxml可以在保留原来xml的空格的基础上修改xml
 - org.xpen.hello.xml.xslt 测试XSLT转换XML,并转为PDF
+- org.xpen.hello.zookeeper 演示用Embedded ZooKeeper做单元测试
 

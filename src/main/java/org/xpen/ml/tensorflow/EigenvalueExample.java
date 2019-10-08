@@ -1,31 +1,31 @@
 package org.xpen.ml.tensorflow;
 
-import static org.bytedeco.javacpp.tensorflow.Const;
-import static org.bytedeco.javacpp.tensorflow.DT_FLOAT;
-import static org.bytedeco.javacpp.tensorflow.InitMain;
-import static org.bytedeco.javacpp.tensorflow.SetDefaultDevice;
+import static org.bytedeco.tensorflow.global.tensorflow.Const;
+import static org.bytedeco.tensorflow.global.tensorflow.DT_FLOAT;
+import static org.bytedeco.tensorflow.global.tensorflow.InitMain;
+import static org.bytedeco.tensorflow.global.tensorflow.SetDefaultDevice;
 
 import java.nio.FloatBuffer;
 
 import org.bytedeco.javacpp.Loader;
-import org.bytedeco.javacpp.tensorflow.Div;
-import org.bytedeco.javacpp.tensorflow.GraphDef;
-import org.bytedeco.javacpp.tensorflow.Input;
-import org.bytedeco.javacpp.tensorflow.MatMul;
-import org.bytedeco.javacpp.tensorflow.Output;
-import org.bytedeco.javacpp.tensorflow.Placeholder;
-import org.bytedeco.javacpp.tensorflow.Scope;
-import org.bytedeco.javacpp.tensorflow.Session;
-import org.bytedeco.javacpp.tensorflow.SessionOptions;
-import org.bytedeco.javacpp.tensorflow.Sqrt;
-import org.bytedeco.javacpp.tensorflow.Square;
-import org.bytedeco.javacpp.tensorflow.Status;
-import org.bytedeco.javacpp.tensorflow.StringTensorPairVector;
-import org.bytedeco.javacpp.tensorflow.StringVector;
-import org.bytedeco.javacpp.tensorflow.Sum;
-import org.bytedeco.javacpp.tensorflow.Tensor;
-import org.bytedeco.javacpp.tensorflow.TensorShape;
-import org.bytedeco.javacpp.tensorflow.TensorVector;
+import org.bytedeco.tensorflow.Div;
+import org.bytedeco.tensorflow.GraphDef;
+import org.bytedeco.tensorflow.Input;
+import org.bytedeco.tensorflow.MatMul;
+import org.bytedeco.tensorflow.Output;
+import org.bytedeco.tensorflow.Placeholder;
+import org.bytedeco.tensorflow.Scope;
+import org.bytedeco.tensorflow.Session;
+import org.bytedeco.tensorflow.SessionOptions;
+import org.bytedeco.tensorflow.Sqrt;
+import org.bytedeco.tensorflow.Square;
+import org.bytedeco.tensorflow.Status;
+import org.bytedeco.tensorflow.StringTensorPairVector;
+import org.bytedeco.tensorflow.StringVector;
+import org.bytedeco.tensorflow.Sum;
+import org.bytedeco.tensorflow.Tensor;
+import org.bytedeco.tensorflow.TensorShape;
+import org.bytedeco.tensorflow.TensorVector;
 
 /**
  * Reference
@@ -44,7 +44,7 @@ public class EigenvalueExample {
     public static void main(String args[]) throws Exception {
 
         // Load all javacpp-preset classes and native libraries
-        Loader.load(org.bytedeco.javacpp.tensorflow.class);
+        Loader.load(org.bytedeco.tensorflow.global.tensorflow.class);
 
         // Platform-specific initialization routine that may be invoked
         // by a main() program that uses TensorFlow.

@@ -1,9 +1,9 @@
 package org.xpen.cv.tesseract;
 
 import org.bytedeco.javacpp.BytePointer;
-import org.bytedeco.javacpp.lept;
-import org.bytedeco.javacpp.lept.PIX;
-import org.bytedeco.javacpp.tesseract.TessBaseAPI;
+import org.bytedeco.leptonica.global.lept;
+import org.bytedeco.leptonica.PIX;
+import org.bytedeco.tesseract.TessBaseAPI;
 
 /**
  * 演示tesseract文字识别
