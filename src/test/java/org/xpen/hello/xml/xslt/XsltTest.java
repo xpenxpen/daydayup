@@ -14,6 +14,10 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+/**
+ * 演示了XSLT转换XML,并用flying-saucer转为PDF
+ *
+ */
 public class XsltTest {
     
     private static final String OUTPUT_FOLDER = "target/xml/xslt/";

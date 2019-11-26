@@ -164,6 +164,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-codec</artifactId>
+            <version>1.8</version>
+        </dependency>
         <!-- these two are to correct issues in fop dependency -->
         <!--<dependency>
             <groupId>avalon-framework</groupId>
