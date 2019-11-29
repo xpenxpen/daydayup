@@ -11,7 +11,7 @@
 - org.xpen.coderead.java.util.concurrent jdk源码阅读注释
 - org.xpen.concurrent CLH 自旋锁,AbstractQueuedSynchronizer类研究
 - org.xpen.cv.opencv.FaceDetection opencv人脸识别,flandmark眼睛，鼻子，嘴检测
-- org.xpen.cv.tesseract.TesseractTest tesseract文字识别
+- org.xpen.cv.tesseract tesseract文字识别
 - org.xpen.graph 演示jgraphx
 - org.xpen.hello.bytecode 动态代理方案性能对比,比较了JDK, cglib, javassist proxy, javassist字节码, asm五种方式
 - org.xpen.java8 java8 lamda表达式、stream api入门
@@ -38,7 +38,8 @@
 - org.xpen.hello.spark spark入门
 - org.xpen.hello.spring.aop Spring AOP 拦截 HTTP invoker测试
 - org.xpen.hello.storm storm入门
-- org.xpen.hello.svg 演示Batik输出SVG
+- org.xpen.hello.string 字符串转义,合法字符检查
+- org.xpen.hello.svg 演示Batik输出SVG,并将SVG转为PNG
 - org.xpen.hello.xml.decentxml 演示decentxml可以在保留原来xml的空格的基础上修改xml
 - org.xpen.hello.xml.xslt 测试XSLT转换XML,并转为PDF
 - org.xpen.hello.zookeeper 演示用Embedded ZooKeeper做单元测试

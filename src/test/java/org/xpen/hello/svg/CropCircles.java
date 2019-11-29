@@ -47,16 +47,16 @@ public class CropCircles {
         }
         saveImage(svgGenerator, OUT_DIR + imFnm);
         svg2png(imFnm);
-    } // end of main()
+    }
 
     private static void svg2png(String svgFileName) {
         try {
-            String svg_URI_input = Paths.get(OUT_DIR + svgFileName).toUri().toURL().toString();
-            TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
+            String uri = Paths.get(OUT_DIR + svgFileName).toUri().toURL().toString();
+            TranscoderInput input = new TranscoderInput(uri);
             OutputStream os = new FileOutputStream(OUT_DIR + svgFileName + ".png");
-            TranscoderOutput output_png_image = new TranscoderOutput(os);              
+            TranscoderOutput output = new TranscoderOutput(os);              
             PNGTranscoder transcoder = new PNGTranscoder();        
-            transcoder.transcode(input_svg_image, output_png_image);
+            transcoder.transcode(input, output);
             os.flush();
             os.close();
         } catch (TranscoderException | IOException e) {
@@ -77,7 +77,7 @@ public class CropCircles {
         } catch (Exception e) {
             System.out.println(e);
         }
-    } // end of saveImage()
+    }
 
     private static String outSVG(String fnm) {
     // add "Out" to end of filename, adding a SVG extension
@@ -87,6 +87,6 @@ public class CropCircles {
 
         String name = fnm.substring(0, dotPosn);
         return (name + "Out.svg");
-    } // end of outSVG()
+    }
 
-} // end of CropCircles class
+}
