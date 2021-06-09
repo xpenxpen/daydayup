@@ -21,6 +21,8 @@ public class HelloJGraphT {
 
         // note undirected edges are printed as: {<v1>,<v2>}
         System.out.println(stringGraph.toString());
+        
+        System.out.println("Edges of V1=" + stringGraph.edgesOf("v1"));
 
         // create a graph based on URL objects
         DirectedGraph<URL, DefaultEdge> hrefGraph = createHrefGraph();

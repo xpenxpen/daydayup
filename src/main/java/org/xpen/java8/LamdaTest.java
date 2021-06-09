@@ -25,7 +25,23 @@ public class LamdaTest {
         Comparator<String> c = (a, b) -> (a.compareTo(b));
         Collections.sort(strings, c);
         strings.forEach( e -> System.out.println( e ) );
-
+        System.out.println("----");
+        
+        // 使用removeIf()结合Lambda表达式实现
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        list.removeIf(str -> str.length()>3); // 删除长度大于3的元素
+        System.out.println(list);
+        System.out.println("----");
+        
+        // 使用Lambda表达式实现
+        list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        list.replaceAll(str -> {
+            if(str.length()>3)
+                return str.toUpperCase();
+            return str;
+        });
+        System.out.println(list);
+        System.out.println("----");
     }
 
 }
