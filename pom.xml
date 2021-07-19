@@ -12,26 +12,28 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.3.6</spring.version>
-        <lucene.version>7.7.0</lucene.version>
         <aspectj.version>1.8.10</aspectj.version>
-        <javacpp.version>1.5.1</javacpp.version>
-        <javacv.version>1.5.1</javacv.version>
-        <tesseract.version>4.1.0-1.5.1</tesseract.version>
-        <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
-        <spark.version>2.4.0</spark.version>
-        <hadoop.version>2.7.7</hadoop.version>
-        <zookeeper.version>3.5.5</zookeeper.version>
-        <curator.version>4.2.0</curator.version>
-        <metrics.version>4.1.0</metrics.version>
+        <batik-codec.version>1.14</batik-codec.version>
         <commons-compress.version>1.20</commons-compress.version>
         <commons-io.version>2.8.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+        <curator.version>4.2.0</curator.version>
+        <fop.version>2.6</fop.version>
+        <hadoop.version>2.7.7</hadoop.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+        <javacpp.version>1.5.1</javacpp.version>
+        <javacv.version>1.5.1</javacv.version>
+        <logback.version>1.2.3</logback.version>
+        <lucene.version>7.7.0</lucene.version>
+        <metrics.version>4.1.0</metrics.version>
         <orika.version>1.5.4</orika.version>
+        <slf4j.version>1.7.31</slf4j.version>
+        <spark.version>2.4.0</spark.version>
+        <spring.version>5.3.9</spring.version>
+        <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
+        <tesseract.version>4.1.0-1.5.1</tesseract.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
     </properties>
 
     <dependencies>
@@ -145,20 +147,11 @@
         </dependency>
         
         <!-- fop -->
-        <!-- https://issues.apache.org/jira/browse/FOP-2151 -->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
-            <version>2.1</version>
+            <version>${fop.version}</version>
             <exclusions>
-                <!--<exclusion>
-                    <groupId>org.apache.avalon.framework</groupId>
-                    <artifactId>avalon-framework-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.avalon.framework</groupId>
-                    <artifactId>avalon-framework-impl</artifactId>
-                </exclusion>-->
                 <exclusion>
                     <groupId>xalan</groupId>
                     <artifactId>xalan</artifactId>
@@ -168,19 +161,8 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-codec</artifactId>
-            <version>1.8</version>
+            <version>${batik-codec.version}</version>
         </dependency>
-        <!-- these two are to correct issues in fop dependency -->
-        <!--<dependency>
-            <groupId>avalon-framework</groupId>
-            <artifactId>avalon-framework-api</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>avalon-framework</groupId>
-            <artifactId>avalon-framework-impl</artifactId>
-            <version>4.2.0</version>
-        </dependency>-->
         
         <!-- flying-saucer -->
         <dependency>

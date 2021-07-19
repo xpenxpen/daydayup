@@ -382,50 +382,41 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * ideas, discussions, and critiques on the design of this class.
      */
     static final class Node {
-        /** Marker to indicate a node is waiting in shared mode 标记是共享模式 */
+        /** 节点正在共享模式下等待的标记 */
         static final Node SHARED = new Node();
-        /** Marker to indicate a node is waiting in exclusive mode 标记是独占模式 */
+        /** 节点正在以独占模式等待的标记 */
         static final Node EXCLUSIVE = null;
 
-        /**
-         * waitStatus value to indicate thread has cancelled 代表线程已经被取消
-         */
+        /** 代表线程(因为超时或者或者被中断)已经被取消*/
         static final int CANCELLED = 1;
-
-        /**
-         * waitStatus value to indicate successor's thread needs unparking
-         * 代表后续节点需要唤醒
-         */
+        /** 代表后继节点需要唤醒*/
         static final int SIGNAL = -1;
-
-        /**
-         * waitStatus value to indicate thread is waiting on condition
-         * 代表线程在condition queue中，等待某一条件
-         */
+        /** 表示节点处于condition队列中，正在等待被唤醒*/
         static final int CONDITION = -2;
-
-        /**
-         * waitStatus value to indicate the next acquireShared should
-         * unconditionally propagate
-         */
+        /** 下一次acquireShared应该无条件传播*/
         static final int PROPAGATE = -3;
 
         /**
-         * Status field, taking on only the values: SIGNAL: The successor of
+         * Status field, taking on only the values: 
+         * <ul>
+         * <li>SIGNAL: The successor of
          * this node is (or will soon be) blocked (via park), so the current
          * node must unpark its successor when it releases or cancels. To avoid
          * races, acquire methods must first indicate they need a signal, then
-         * retry the atomic acquire, and then, on failure, block. CANCELLED:
+         * retry the atomic acquire, and then, on failure, block. </li>
+         * <li>CANCELLED:
          * This node is cancelled due to timeout or interrupt. Nodes never leave
          * this state. In particular, a thread with cancelled node never again
-         * blocks. CONDITION: This node is currently on a condition queue. It
+         * blocks. </li>
+         * <li>CONDITION: This node is currently on a condition queue. It
          * will not be used as a sync queue node until transferred, at which
          * time the status will be set to 0. (Use of this value here has nothing
-         * to do with the other uses of the field, but simplifies mechanics.)
-         * PROPAGATE: A releaseShared should be propagated to other nodes. This
+         * to do with the other uses of the field, but simplifies mechanics.)</li>
+         * <li>PROPAGATE: A releaseShared should be propagated to other nodes. This
          * is set (for head node only) in doReleaseShared to ensure propagation
          * continues, even if other operations have since intervened. 0: None of
-         * the above
+         * the above</li>
+         * </ul>
          * 
          * The values are arranged numerically to simplify use. Non-negative
          * values mean that a node doesn't need to signal. So, most code doesn't
@@ -486,11 +477,13 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
          * waiting on conditions. They are then transferred to the queue to
          * re-acquire. And because conditions can only be exclusive, we save a
          * field by using special value to indicate shared mode.
+         * 下一个condition队列等待节点
          */
         Node nextWaiter;
 
         /**
          * Returns true if node is waiting in shared mode
+         * 是否是共享模式
          */
         final boolean isShared() {
             return nextWaiter == SHARED;
@@ -500,6 +493,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
          * Returns previous node, or throws NullPointerException if null. Use
          * when predecessor cannot be null. The null check could be elided, but
          * is present to help the VM.
+         * 返回前驱节点或者抛出异常
          * 
          * @return the predecessor of this node
          */
@@ -526,22 +520,20 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
     }
 
     /**
-     * Head of the wait queue, lazily initialized. Except for initialization, it
-     * is modified only via method setHead. Note: If head exists, its waitStatus
-     * is guaranteed not to be CANCELLED.
+     * 等待队列的头节点，只能通过setHead方法修改
+     * 如果head存在，能保证waitStatus状态不为CANCELLED
      */
     private transient volatile Node head;
 
     /**
-     * Tail of the wait queue, lazily initialized. Modified only via method enq
-     * to add new wait node.
+     * 等待队列的尾结点，只能通过enq方法来添加新的等待节点
      */
     private transient volatile Node tail;
 
     /**
-     * The synchronization state.
-     * <p>
-     * 同步状态。
+     * 锁的状态。0表示未锁定,大于0表示已锁定.
+     * 这个值可以用来实现锁的[可重入性]，例如 state=3 就表示锁被同一个线程获取了3次，想要完全解锁，必须要对应的解锁3次
+     * 同时这个变量还是用volatile关键字修饰的，保证可见性
      */
     private volatile int state;
 
@@ -663,13 +655,13 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
     /**
      * (3)Inserts node into queue, initializing if necessary. See picture above.
      * <p>
-     * 循环插入队尾直到CAS成功
+     * 自旋插入队尾直到CAS成功
      * 
      * @param node the node to insert
      * @return node's predecessor
      */
     private Node enq(final Node node) {
-        //乐观等待
+        //乐观等待(自旋)
         for (;;) {
             Node t = tail;
             if (t == null) { // Must initialize
@@ -705,7 +697,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
         try {
             boolean interrupted = false;
             // 等待前继结点释放锁
-            // 自旋re-check
+            // 自旋
             for (;;) {
                 // 获取前继
                 final Node p = node.predecessor();
@@ -737,7 +729,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
                 }
             }
         } finally {
-            // 出现异常
+            // 自旋异常退出，取消正在进行锁争抢
             if (failed)
                 cancelAcquire(node);
         }
@@ -801,6 +793,7 @@ public abstract class AbstractQueuedSynchronizer extends AbstractOwnableSynchron
      * @return {@code true} if interrupted
      */
     private final boolean parkAndCheckInterrupt() {
+        //阻塞当前线程
         LockSupport.park(this);
         return Thread.interrupted();
     }
