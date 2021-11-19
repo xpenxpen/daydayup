@@ -1,6 +1,9 @@
 # Java各种开源库积累
 好好学习，天天向上。
 
+## 编译
+mvn clean package -Dmaven.test.skip=true
+
 ## 演示内容
 
 1)src/main/java

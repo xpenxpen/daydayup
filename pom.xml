@@ -12,10 +12,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
         <aspectj.version>1.8.10</aspectj.version>
         <batik-codec.version>1.14</batik-codec.version>
-        <commons-compress.version>1.20</commons-compress.version>
-        <commons-io.version>2.8.0</commons-io.version>
+        <commons-compress.version>1.21</commons-compress.version>
+        <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
         <curator.version>4.2.0</curator.version>
@@ -162,6 +163,13 @@
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-codec</artifactId>
             <version>${batik-codec.version}</version>
+            <exclusions>
+                <!-- 和JDK自带冲突 -->
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         
         <!-- flying-saucer -->
@@ -204,7 +212,7 @@
         <dependency>
           <groupId>com.googlecode.soundlibs</groupId>
           <artifactId>tritonus-share</artifactId>
-          <version>0.3.7-2</version>
+          <version>0.3.7.4</version>
         </dependency>
         <dependency>
           <groupId>com.googlecode.soundlibs</groupId>
@@ -344,6 +352,13 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
+            <exclusions>
+                <!-- 和JDK自带冲突 -->
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Storm -->
@@ -468,10 +483,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
-                <inherited>true</inherited>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>
