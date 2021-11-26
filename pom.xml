@@ -28,6 +28,7 @@
         <logback.version>1.2.3</logback.version>
         <lucene.version>7.7.0</lucene.version>
         <metrics.version>4.1.0</metrics.version>
+        <opennlp.version>1.9.4</opennlp.version>
         <orika.version>1.5.4</orika.version>
         <slf4j.version>1.7.31</slf4j.version>
         <spark.version>2.4.8</spark.version>
@@ -82,7 +83,7 @@
 
         <!-- hibernate validator -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -460,7 +461,12 @@
             <version>${curator.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>${opennlp.version}</version>
+        </dependency>
+        
         <!-- TEST begin -->
         <dependency>
             <groupId>junit</groupId>

@@ -2,6 +2,7 @@
 好好学习，天天向上。
 
 ## 编译
+环境： JAVA 11
 mvn clean package -Dmaven.test.skip=true
 
 ## 演示内容
@@ -34,6 +35,7 @@ mvn clean package -Dmaven.test.skip=true
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
 - org.xpen.hello.math.ml 线性回归(两种方式——commons-math和spark-ml)
 - org.xpen.hello.metrics metrics演示
+- org.xpen.hello.nlp 自然语言处理
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
 - org.xpen.hello.search.lucene lucene分词、空间搜索
