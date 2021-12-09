@@ -1,6 +1,6 @@
 package org.xpen.hello.string;
 
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.junit.Test;
 import org.unbescape.java.JavaEscape;
 import org.unbescape.java.JavaEscapeLevel;

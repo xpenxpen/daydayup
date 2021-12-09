@@ -19,23 +19,28 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
+        <commons-text.version>1.9</commons-text.version>
         <curator.version>4.2.0</curator.version>
         <fop.version>2.6</fop.version>
+        <freemarker.version>2.3.20</freemarker.version>
         <hadoop.version>2.7.7</hadoop.version>
         <hanlp.version>portable-1.8.2</hanlp.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <javacpp.version>1.5.1</javacpp.version>
         <javacv.version>1.5.1</javacv.version>
+        <kryo.version>5.0.0</kryo.version>
         <logback.version>1.2.3</logback.version>
         <lucene.version>7.7.0</lucene.version>
         <metrics.version>4.1.0</metrics.version>
         <opennlp.version>1.9.4</opennlp.version>
         <orika.version>1.5.4</orika.version>
+        <selenium.version>4.1.0</selenium.version>
         <slf4j.version>1.7.31</slf4j.version>
         <spark.version>2.4.8</spark.version>
         <spring.version>5.3.9</spring.version>
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
         <tesseract.version>4.1.0-1.5.1</tesseract.version>
+        <unbescape.version>1.1.5.RELEASE</unbescape.version>
         <zookeeper.version>3.5.5</zookeeper.version>
     </properties>
 
@@ -61,6 +66,17 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>${commons-math.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.unbescape</groupId>
+            <artifactId>unbescape</artifactId>
+            <version>${unbescape.version}</version>
         </dependency>
         
         <!-- Log -->
@@ -104,7 +120,7 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.20</version>
+            <version>${freemarker.version}</version>
         </dependency>
         
         <!-- SPRING begin -->
@@ -415,17 +431,11 @@
             <version>${tensorflow.version}</version>
         </dependency>-->
         
-        <dependency>
-            <groupId>org.unbescape</groupId>
-            <artifactId>unbescape</artifactId>
-            <version>1.1.5.RELEASE</version>
-        </dependency>
-        
         <!-- Serialization -->
         <dependency>
            <groupId>com.esotericsoftware</groupId>
            <artifactId>kryo</artifactId>
-           <version>5.0.0</version>
+           <version>${kryo.version}</version>
         </dependency>
         
         <!-- metrics -->
@@ -473,6 +483,12 @@
             <groupId>com.hankcs</groupId>
             <artifactId>hanlp</artifactId>
             <version>${hanlp.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
         </dependency>
 
         <!-- TEST begin -->
