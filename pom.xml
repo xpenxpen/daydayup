@@ -30,7 +30,7 @@
         <javacv.version>1.5.1</javacv.version>
         <kryo.version>5.0.0</kryo.version>
         <logback.version>1.2.3</logback.version>
-        <lucene.version>7.7.0</lucene.version>
+        <lucene.version>8.6.2</lucene.version>
         <metrics.version>4.1.0</metrics.version>
         <opennlp.version>1.9.4</opennlp.version>
         <orika.version>1.5.4</orika.version>
@@ -380,6 +380,19 @@
         </dependency>
 
         <!-- Storm -->
+        <!-- <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-client</artifactId>
+            <version>2.3.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-server</artifactId>
+            <version>2.3.0</version>
+            <scope>test</scope>
+        </dependency>-->
+        
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
@@ -403,6 +416,21 @@
                     <artifactId>log4j-over-slf4j</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        
+        <!-- 紧急修复log4j漏洞 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.1</version>
+            <scope>provided</scope>
         </dependency>
         
         <!-- OpenCV -->

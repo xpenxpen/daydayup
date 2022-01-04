@@ -21,23 +21,22 @@ public class HelloWorldBolt extends BaseRichBolt {
 
 	@Override
 	public void prepare(Map stormConf, TopologyContext context,
-			OutputCollector collector) {
+		OutputCollector collector) {
 	}
 
 	@Override
 	public void execute(Tuple input) {
 		String test = input.getStringByField("sentence");
-		if(test == "Hello World"){
+		if (test.equals("Hello World")) {
 			myCount++;
 			System.out.println("Found a Hello World! My Count is now: " + Integer.toString(myCount));
-			LOG.debug("Found a Hello World! My Count is now: " + Integer.toString(myCount));
+			LOG.debug("Found a Hello World! My Count is now: {}", Integer.toString(myCount));
 		}
 	}
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
 		declarer.declare(new Fields("myCount"));
-
 	}
 
 }
