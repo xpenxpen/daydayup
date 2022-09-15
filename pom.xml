@@ -26,8 +26,8 @@
         <hadoop.version>2.7.7</hadoop.version>
         <hanlp.version>portable-1.8.2</hanlp.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
-        <javacpp.version>1.5.1</javacpp.version>
-        <javacv.version>1.5.1</javacv.version>
+        <javacpp.version>1.5.7</javacpp.version>
+        <javacv.version>1.5.7</javacv.version>
         <kryo.version>5.0.0</kryo.version>
         <logback.version>1.2.3</logback.version>
         <lucene.version>8.6.2</lucene.version>
@@ -303,11 +303,6 @@
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
-            <version>${lucene.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-spatial</artifactId>
             <version>${lucene.version}</version>
         </dependency>
         <dependency>
