@@ -157,7 +157,7 @@ public class SpatialExample {
     }
 
     private void printDocs(IndexSearcher indexSearcher, TopDocs docs, SpatialArgs args) throws IOException {
-        for (int i = 0; i < docs.totalHits; i++) {
+        for (int i = 0; i < docs.totalHits.value; i++) {
             Document doc = indexSearcher.doc(docs.scoreDocs[i].doc);
             System.out.print(doc.getField("id").numericValue().intValue());
             System.out.print(":" + doc.getField("name").stringValue());

@@ -26,6 +26,8 @@
         <hadoop.version>2.7.7</hadoop.version>
         <hanlp.version>portable-1.8.2</hanlp.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+        <itext.version>5.5.13.3</itext.version>
+        <itext-asian.version>5.2.0</itext-asian.version>
         <javacpp.version>1.5.7</javacpp.version>
         <javacv.version>1.5.7</javacv.version>
         <kryo.version>5.0.0</kryo.version>
@@ -157,12 +159,12 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.5.1</version>
+            <version>${itext.version}</version>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext-asian</artifactId>
-            <version>5.2.0</version>
+            <version>${itext-asian.version}</version>
         </dependency>
         
         <!-- fop -->
