@@ -20,7 +20,7 @@
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-text.version>1.9</commons-text.version>
-        <curator.version>4.2.0</curator.version>
+        <curator.version>5.2.0</curator.version>
         <fop.version>2.6</fop.version>
         <freemarker.version>2.3.20</freemarker.version>
         <hadoop.version>2.7.7</hadoop.version>
@@ -43,7 +43,7 @@
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
         <tesseract.version>4.1.0-1.5.1</tesseract.version>
         <unbescape.version>1.1.5.RELEASE</unbescape.version>
-        <zookeeper.version>3.5.5</zookeeper.version>
+        <zookeeper.version>3.7.0</zookeeper.version>
     </properties>
 
     <dependencies>
