@@ -3,7 +3,7 @@ package org.xpen.hello.nlp;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import opennlp.tools.langdetect.Language;
 import opennlp.tools.langdetect.LanguageDetector;

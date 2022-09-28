@@ -16,7 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 演示用fop生成一个带中文的pdf文件

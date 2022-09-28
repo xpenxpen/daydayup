@@ -12,7 +12,7 @@ import org.apache.commons.math3.optim.linear.PivotSelectionRule;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.linear.SimplexSolver;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 演示线性编程

@@ -19,6 +19,8 @@ import scala.Tuple2;
  * 1.配置HADOOP_HOME环境变量,将hadoop.dll,winutils.exe两个文件放入HADOOP_HOME/bin
  * 2.eclipse->Run as->Environment加入HADOOP_HOME
  * 3.JVM参数 -Xms256m -Xmx1024m
+ * 4.如果仍然报错java.lang.UnsatisfiedLinkError:org.apache.hadoop.io.nativeio.NativeIO$Windows.access0的话，
+ * 将hadoop.dll复制到C:\Windows\System32中可以解决
  * 
  * 每次运行需要手工删除"target/WordCount.txt"目录
  * 运行完检查结果target/WordCount.txt/part-00000

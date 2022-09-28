@@ -2,8 +2,8 @@ package org.xpen.hello.concurrent.forkjoin;
 
 import java.util.concurrent.ForkJoinPool;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class  FibonacciTaskTracesTest {
 
@@ -26,7 +26,7 @@ public class  FibonacciTaskTracesTest {
             final long result = pool.invoke(task);
             System.out.println("result = " + result + "\n");
 
-            Assert.assertEquals(results[inputValue], result);
+            Assertions.assertEquals(results[inputValue], result);
         }
     }
 }

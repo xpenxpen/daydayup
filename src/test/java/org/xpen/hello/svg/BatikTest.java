@@ -1,6 +1,6 @@
 package org.xpen.hello.svg;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 演示Batik输出SVG,并转为PNG

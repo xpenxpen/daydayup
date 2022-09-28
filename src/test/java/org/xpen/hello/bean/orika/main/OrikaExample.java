@@ -3,21 +3,21 @@ package org.xpen.hello.bean.orika.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import ma.glasnost.orika.BoundMapperFacade;
-import ma.glasnost.orika.MapperFacade;
-import ma.glasnost.orika.MapperFactory;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.xpen.hello.bean.orika.bean.Address;
 import org.xpen.hello.bean.orika.bean.House;
 import org.xpen.hello.bean.orika.bean.Name;
 import org.xpen.hello.bean.orika.bean.Person;
 import org.xpen.hello.bean.orika.dto.PersonDto;
+
+import ma.glasnost.orika.BoundMapperFacade;
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
 
 /**
  * orika演示
@@ -27,7 +27,7 @@ import org.xpen.hello.bean.orika.dto.PersonDto;
  * 3.orika BoundMapperFacade
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"classpath:orika/library-beans.xml"})
 public class OrikaExample extends AbstractJUnit4SpringContextTests {
 

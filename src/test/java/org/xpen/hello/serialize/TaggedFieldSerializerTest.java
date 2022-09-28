@@ -3,7 +3,7 @@ package org.xpen.hello.serialize;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

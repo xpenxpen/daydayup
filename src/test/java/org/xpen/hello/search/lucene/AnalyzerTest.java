@@ -7,7 +7,7 @@ import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.chenlb.mmseg4j.analysis.MMSegAnalyzer;
 

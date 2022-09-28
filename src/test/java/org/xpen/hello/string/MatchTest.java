@@ -1,7 +1,7 @@
 package org.xpen.hello.string;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.base.CharMatcher;
 
@@ -15,8 +15,8 @@ public class MatchTest {
                 .or(CharMatcher.inRange('a', 'z'))
                 .or(CharMatcher.inRange('A', 'Z'));
         
-        Assert.assertTrue(CHAR_MATCHER_ALPHANUMBER.matchesAllOf("abcXYZ123"));
-        Assert.assertFalse(CHAR_MATCHER_ALPHANUMBER.matchesAllOf("abc_XYZ123"));
+        Assertions.assertTrue(CHAR_MATCHER_ALPHANUMBER.matchesAllOf("abcXYZ123"));
+        Assertions.assertFalse(CHAR_MATCHER_ALPHANUMBER.matchesAllOf("abc_XYZ123"));
     }
 
 }

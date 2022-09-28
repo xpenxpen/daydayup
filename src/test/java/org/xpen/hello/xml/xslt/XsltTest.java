@@ -1,4 +1,5 @@
 package org.xpen.hello.xml.xslt;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -11,7 +12,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 /**

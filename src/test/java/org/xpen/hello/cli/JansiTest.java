@@ -3,7 +3,7 @@ package org.xpen.hello.cli;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Color;
 import org.fusesource.jansi.AnsiConsole;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 演示Jansi让控制台输出彩色文字
