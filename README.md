@@ -16,6 +16,7 @@
 - org.xpen.coderead.java.util.concurrent jdk源码阅读注释
 - org.xpen.concurrent CLH 自旋锁,AbstractQueuedSynchronizer类研究
 - org.xpen.cv.opencv.FaceDetection opencv人脸识别,flandmark眼睛，鼻子，嘴检测
+- org.xpen.cv.opencv.YOLONet YOLO v4目标检测
 - org.xpen.cv.tesseract tesseract文字识别
 - org.xpen.graph 演示jgraphx
 - org.xpen.hello.bytecode 动态代理方案性能对比,比较了JDK, cglib, javassist proxy, javassist字节码, asm五种方式
@@ -36,7 +37,7 @@
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
 - org.xpen.hello.math.ml 线性回归(两种方式——commons-math和spark-ml)
 - org.xpen.hello.metrics metrics演示
-- org.xpen.hello.nlp 自然语言处理(人名识别)
+- org.xpen.hello.nlp 自然语言处理(人名识别,简繁转换)
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
 - org.xpen.hello.search.lucene lucene分词、空间搜索
