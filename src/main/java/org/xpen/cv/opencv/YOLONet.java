@@ -24,7 +24,6 @@ import static org.bytedeco.opencv.global.opencv_highgui.imshow;
 import static org.bytedeco.opencv.global.opencv_highgui.waitKey;
 import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
 import static org.bytedeco.opencv.global.opencv_imgproc.LINE_8;
-import static org.bytedeco.opencv.global.opencv_imgproc.rectangle;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -37,6 +36,7 @@ import org.bytedeco.javacpp.FloatPointer;
 import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.indexer.FloatIndexer;
 import org.bytedeco.opencv.global.opencv_dnn;
+import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.MatVector;
 import org.bytedeco.opencv.opencv_core.Point;
@@ -68,14 +68,19 @@ public class YOLONet {
         List<ObjectDetectionResult> results = yolo.predict(image);
 
         System.out.printf("Detected %d objects:\n", results.size());
+        Scalar fontColor = new Scalar(0, 255, 0, 0);
         for(ObjectDetectionResult result : results) {
             System.out.printf("\t%s - %.2f%%\n", result.className, result.confidence * 100f);
 
             // annotate on image
-            rectangle(image,
+            opencv_imgproc.rectangle(image,
                     new Point(result.x, result.y),
                     new Point(result.x + result.width, result.y + result.height),
                     Scalar.MAGENTA, 2, LINE_8, 0);
+            
+            Point point2 = new Point(result.x, result.y);
+            opencv_imgproc.putText(image, result.className,
+            		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.1, fontColor, 3, 0, false);
         }
 
         imshow("YOLO", image);
