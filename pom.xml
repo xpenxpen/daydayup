@@ -13,14 +13,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
+        <asm.version>5.0.3</asm.version>
         <aspectj.version>1.8.10</aspectj.version>
         <batik-codec.version>1.14</batik-codec.version>
+        <cglib.version>3.1</cglib.version>
         <commons-compress.version>1.21</commons-compress.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-text.version>1.9</commons-text.version>
         <curator.version>5.2.0</curator.version>
+        <flying-saucer.version>9.0.6</flying-saucer.version>
         <fop.version>2.6</fop.version>
         <freemarker.version>2.3.20</freemarker.version>
         <hadoop.version>3.3.4</hadoop.version>
@@ -31,16 +34,21 @@
         <jakarta.el-api.version>5.0.1</jakarta.el-api.version>
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+        <javassist.version>3.18.2-GA</javassist.version>
         <javacpp.version>1.5.7</javacpp.version>
         <javacv.version>1.5.7</javacv.version>
+        <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.9.1</junit.version>
         <kryo.version>5.0.0</kryo.version>
         <logback.version>1.2.3</logback.version>
         <lucene.version>8.6.2</lucene.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <metrics.version>4.1.0</metrics.version>
+        <okhttp.version>4.10.0</okhttp.version>
+        <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <opennlp.version>1.9.4</opennlp.version>
         <orika.version>1.5.4</orika.version>
+        <poi.version>5.2.3</poi.version>
         <selenium.version>4.1.0</selenium.version>
         <slf4j.version>1.7.31</slf4j.version>
         <spark.version>3.3.0</spark.version>
@@ -205,36 +213,64 @@
         <dependency>
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>flying-saucer-pdf-itext5</artifactId>
-            <version>9.0.6</version>
+            <version>${flying-saucer.version}</version>
         </dependency>
-
+        
+        <!-- openhtmltopdf -->
+      	<dependency>
+      		<groupId>com.openhtmltopdf</groupId>
+      		<artifactId>openhtmltopdf-core</artifactId>
+      		<version>${openhtmltopdf.version}</version>
+      	</dependency>
+        <dependency>
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-pdfbox</artifactId>
+            <version>${openhtmltopdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-java2d</artifactId>
+            <version>${openhtmltopdf.version}</version>
+        </dependency>
+        <!-- <dependency>
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-slf4j</artifactId>
+            <version>${openhtmltopdf.version}</version>
+        </dependency>-->
+        <!-- webp图片支持 -->
+        <dependency>
+            <groupId>org.sejda.imageio</groupId>
+            <artifactId>webp-imageio</artifactId>
+            <version>0.1.6</version>
+        </dependency>
+    
         <!-- Byte code engineering -->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.1</version>
+            <version>${cglib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.18.2-GA</version>
+            <version>${javassist.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <version>5.0.3</version>
+            <version>${asm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm-commons</artifactId>
-            <version>5.0.3</version>
+            <version>${asm.version}</version>
         </dependency>
         
         <!-- excel -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.11</version>
+            <version>${poi.version}</version>
         </dependency>
         
         <!-- sound -->
@@ -252,6 +288,11 @@
           <groupId>com.googlecode.soundlibs</groupId>
           <artifactId>vorbisspi</artifactId>
           <version>1.0.3-1</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.caprica</groupId>
+            <artifactId>vlcj</artifactId>
+            <version>4.8.2</version>
         </dependency>
         
         <!-- cli -->
@@ -304,7 +345,18 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.8.1</version>
         </dependency>-->
-        
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+
         <!-- search -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -350,7 +402,7 @@
             <version>${spark.version}</version>
             <scope>provided</scope>
             <!-- 暂时disable，因为spark需要 -->
-            <!-- <exclusions>
+            <exclusions>
                 <exclusion>
                     <groupId>log4j</groupId>
                     <artifactId>log4j</artifactId>
@@ -359,7 +411,11 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
-            </exclusions>-->
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -489,6 +545,12 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>${zookeeper.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
