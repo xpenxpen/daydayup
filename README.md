@@ -2,7 +2,7 @@
 好好学习，天天向上。
 
 ## 编译
-- 环境： JAVA 11
+- 环境： JAVA 17
 - mvn clean package -Dmaven.test.skip=true
 
 ## 演示内容
