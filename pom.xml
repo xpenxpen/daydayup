@@ -36,7 +36,7 @@
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <javassist.version>3.18.2-GA</javassist.version>
         <javacpp.version>1.5.7</javacpp.version>
-        <javacv.version>1.5.7</javacv.version>
+        <javacv.version>1.5.8</javacv.version>
         <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.9.1</junit.version>
         <kryo.version>5.0.0</kryo.version>
@@ -55,7 +55,7 @@
         <spring.version>6.0.6</spring.version>
         <storm.version>1.2.4</storm.version>
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
-        <tesseract.version>5.0.1-1.5.7</tesseract.version>
+        <tesseract.version>5.2.0-1.5.8</tesseract.version>
         <unbescape.version>1.1.5.RELEASE</unbescape.version>
         <zookeeper.version>3.7.0</zookeeper.version>
     </properties>

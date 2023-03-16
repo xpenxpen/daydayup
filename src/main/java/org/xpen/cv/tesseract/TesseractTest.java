@@ -1,7 +1,7 @@
 package org.xpen.cv.tesseract;
 
 import org.bytedeco.javacpp.BytePointer;
-import org.bytedeco.leptonica.global.lept;
+import org.bytedeco.leptonica.global.leptonica;
 import org.bytedeco.leptonica.PIX;
 import org.bytedeco.tesseract.TessBaseAPI;
 
@@ -40,7 +40,7 @@ public class TesseractTest {
             }
 
             // Open input image with leptonica library
-            PIX image = lept.pixRead("src/test/resources/cv/" + png);
+            PIX image = leptonica.pixRead("src/test/resources/cv/" + png);
             api.SetImage(image);
             // Get OCR result
             outText = api.GetUTF8Text();
@@ -54,7 +54,7 @@ public class TesseractTest {
             // Destroy used object and release memory
             api.End();
             outText.deallocate();
-            lept.pixDestroy(image);
+            leptonica.pixDestroy(image);
             api.close();
         }
     }
