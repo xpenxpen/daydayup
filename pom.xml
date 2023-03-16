@@ -23,6 +23,7 @@
         <commons-math.version>3.6.1</commons-math.version>
         <commons-text.version>1.10.0</commons-text.version>
         <curator.version>5.2.0</curator.version>
+        <decentxml.version>1.4</decentxml.version>
         <flying-saucer.version>9.0.6</flying-saucer.version>
         <fop.version>2.6</fop.version>
         <freemarker.version>2.3.20</freemarker.version>
@@ -37,6 +38,9 @@
         <javassist.version>3.18.2-GA</javassist.version>
         <javacpp.version>1.5.7</javacpp.version>
         <javacv.version>1.5.8</javacv.version>
+        <jfreechart.version>1.5.0</jfreechart.version>
+        <jgrapht.version>1.5.1</jgrapht.version>
+        <jgraphx.version>4.2.2</jgraphx.version>
         <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.9.1</junit.version>
         <kryo.version>5.0.0</kryo.version>
@@ -307,12 +311,12 @@
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
-            <version>1.0.0</version>
+            <version>${jgrapht.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-demo</artifactId>
-            <version>1.0.0</version>
+            <version>${jgrapht.version}</version>
             <!-- 暂时disable，因为spark需要特定版本的antlr -->
             <exclusions>
                 <exclusion>
@@ -322,21 +326,21 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.github.monkeysintown</groupId>
+            <groupId>com.github.vlsi.mxgraph</groupId>
             <artifactId>jgraphx</artifactId>
-            <version>3.3.1.1</version>
+            <version>${jgraphx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.5.0</version>
+            <version>${jfreechart.version}</version>
         </dependency>
         
         <!-- XML -->
         <dependency>
             <groupId>de.pdark</groupId>
             <artifactId>decentxml</artifactId>
-            <version>1.4</version>
+            <version>${decentxml.version}</version>
         </dependency>
         
         <!-- JSON -->

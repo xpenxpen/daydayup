@@ -3,8 +3,7 @@ package org.xpen.graph;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.jgrapht.DirectedGraph;
-import org.jgrapht.UndirectedGraph;
+import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
@@ -17,7 +16,7 @@ import org.jgrapht.graph.SimpleGraph;
 public class HelloJGraphT {
 
     public static void main(String[] args) {
-        UndirectedGraph<String, DefaultEdge> stringGraph = createStringGraph();
+    	Graph<String, DefaultEdge> stringGraph = createStringGraph();
 
         // note undirected edges are printed as: {<v1>,<v2>}
         System.out.println(stringGraph.toString());
@@ -25,7 +24,7 @@ public class HelloJGraphT {
         System.out.println("Edges of V1=" + stringGraph.edgesOf("v1"));
 
         // create a graph based on URL objects
-        DirectedGraph<URL, DefaultEdge> hrefGraph = createHrefGraph();
+        Graph<URL, DefaultEdge> hrefGraph = createHrefGraph();
 
         // note directed edges are printed as: (<v1>,<v2>)
         System.out.println(hrefGraph.toString());
@@ -36,8 +35,8 @@ public class HelloJGraphT {
      *
      * @return a graph based on URL objects.
      */
-    private static DirectedGraph<URL, DefaultEdge> createHrefGraph() {
-        DirectedGraph<URL, DefaultEdge> g = new DefaultDirectedGraph<>(DefaultEdge.class);
+    private static Graph<URL, DefaultEdge> createHrefGraph() {
+    	Graph<URL, DefaultEdge> g = new DefaultDirectedGraph<>(DefaultEdge.class);
 
         try {
             URL amazon = new URL("http://www.amazon.com");
@@ -64,8 +63,8 @@ public class HelloJGraphT {
      *
      * @return a graph based on String objects.
      */
-    private static UndirectedGraph<String, DefaultEdge> createStringGraph() {
-        UndirectedGraph<String, DefaultEdge> g = new SimpleGraph<>(DefaultEdge.class);
+    private static Graph<String, DefaultEdge> createStringGraph() {
+    	Graph<String, DefaultEdge> g = new SimpleGraph<>(DefaultEdge.class);
 
         String v1 = "v1";
         String v2 = "v2";
