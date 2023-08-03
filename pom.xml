@@ -36,8 +36,9 @@
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <javassist.version>3.18.2-GA</javassist.version>
-        <javacpp.version>1.5.7</javacpp.version>
-        <javacv.version>1.5.8</javacv.version>
+        <javacpp.version>1.5.9</javacpp.version>
+        <javacv.version>1.5.9</javacv.version>
+        <javacpp.flandmark.version>1.07-1.5.8</javacpp.flandmark.version>
         <jfreechart.version>1.5.0</jfreechart.version>
         <jgrapht.version>1.5.1</jgrapht.version>
         <jgraphx.version>4.2.2</jgraphx.version>
@@ -51,6 +52,7 @@
         <okhttp.version>4.10.0</okhttp.version>
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <opennlp.version>1.9.4</opennlp.version>
+        <openpose.version>1.7.0-1.5.8</openpose.version>
         <orika.version>1.5.4</orika.version>
         <poi.version>5.2.3</poi.version>
         <selenium.version>4.1.0</selenium.version>
@@ -61,6 +63,7 @@
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
         <tesseract.version>5.2.0-1.5.8</tesseract.version>
         <unbescape.version>1.1.5.RELEASE</unbescape.version>
+        <zip4j.version>2.11.5</zip4j.version>
         <zookeeper.version>3.7.0</zookeeper.version>
     </properties>
 
@@ -99,6 +102,12 @@
             <version>${unbescape.version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>${zip4j.version}</version>
+        </dependency>
+
         <!-- Log -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -506,12 +515,23 @@
             <artifactId>javacv-platform</artifactId>
             <version>${javacv.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>flandmark-platform</artifactId>
+            <version>${javacpp.flandmark.version}</version>
+        </dependency>
+
         <!-- OCR -->
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>tesseract-platform</artifactId>
             <version>${tesseract.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>openpose-platform</artifactId>
+            <version>${openpose.version}</version>
         </dependency>
         
         <!-- tensorflow -->

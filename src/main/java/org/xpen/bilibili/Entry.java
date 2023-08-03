@@ -2,7 +2,17 @@ package org.xpen.bilibili;
 
 public class Entry {
 	
+	private int videoQuality;
+	
 	private PageData pageData;
+
+	public int getVideoQuality() {
+		return videoQuality;
+	}
+
+	public void setVideoQuality(int videoQuality) {
+		this.videoQuality = videoQuality;
+	}
 
 	public PageData getPageData() {
 		return pageData;
