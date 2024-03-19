@@ -21,6 +21,10 @@ import scala.Tuple2;
  * 3.JVM参数 -Xms256m -Xmx1024m
  * 4.如果仍然报错java.lang.UnsatisfiedLinkError:org.apache.hadoop.io.nativeio.NativeIO$Windows.access0的话，
  * 将hadoop.dll复制到C:\Windows\System32中可以解决
+ * 5.如果报错java.lang.IllegalAccessError: class org.apache.spark.storage.StorageUtils$
+ *  (in unnamed module @0x3403e2ac) cannot access class sun.nio.ch.DirectBuffer (in module java.base)
+ *   because module java.base does not export sun.nio.ch to unnamed module @0x3403e2ac
+ * VM_ARG加上--add-exports java.base/sun.nio.ch=ALL-UNNAMED
  * 
  * 每次运行需要手工删除"target/WordCount.txt"目录
  * 运行完检查结果target/WordCount.txt/part-00000

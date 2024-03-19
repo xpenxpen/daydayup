@@ -27,7 +27,10 @@ public class WordCount2 {
     public static void main(String[] args) throws Exception {
         String inputFile = "src/test/resources/spark/word.txt";
         // Spark2.0中引入SparkSession，提供了一个统一的切入点简化使用
-        SparkSession spark = SparkSession.builder().appName("JavaWordCount").master("local[2]").getOrCreate();
+        SparkSession spark = SparkSession.builder()
+                .appName("JavaWordCount").master("local[2]")
+                .config("spark.log.level", "INFO")
+                .getOrCreate();
         
         // Load our input data.
         JavaRDD<String> input = spark.read().textFile(inputFile).javaRDD();

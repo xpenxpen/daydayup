@@ -16,10 +16,12 @@
         <asm.version>5.0.3</asm.version>
         <aspectj.version>1.8.10</aspectj.version>
         <batik-codec.version>1.14</batik-codec.version>
+        <bc-provider.version>1.77</bc-provider.version>
         <cglib.version>3.1</cglib.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
         <commons-compress.version>1.21</commons-compress.version>
-        <commons-io.version>2.11.0</commons-io.version>
-        <commons-lang.version>3.12.0</commons-lang.version>
+        <commons-io.version>2.14.0</commons-io.version>
+        <commons-lang.version>3.13.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
         <commons-text.version>1.10.0</commons-text.version>
         <curator.version>5.2.0</curator.version>
@@ -32,6 +34,7 @@
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <itext.version>5.5.13.3</itext.version>
         <itext-asian.version>5.2.0</itext-asian.version>
+        <jackson.version>2.15.2</jackson.version>
         <jakarta.el-api.version>5.0.1</jakarta.el-api.version>
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
@@ -42,11 +45,12 @@
         <jfreechart.version>1.5.0</jfreechart.version>
         <jgrapht.version>1.5.1</jgrapht.version>
         <jgraphx.version>4.2.2</jgraphx.version>
+        <jsch.version>0.1.55</jsch.version>
         <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.9.1</junit.version>
-        <kryo.version>5.0.0</kryo.version>
-        <logback.version>1.2.3</logback.version>
-        <lucene.version>8.6.2</lucene.version>
+        <kryo.version>5.5.0</kryo.version>
+        <logback.version>1.4.11</logback.version>
+        <lucene.version>9.6.0</lucene.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <metrics.version>4.1.0</metrics.version>
         <okhttp.version>4.10.0</okhttp.version>
@@ -55,9 +59,10 @@
         <openpose.version>1.7.0-1.5.8</openpose.version>
         <orika.version>1.5.4</orika.version>
         <poi.version>5.2.3</poi.version>
+        <scala-release.version>2.12</scala-release.version>
         <selenium.version>4.1.0</selenium.version>
-        <slf4j.version>1.7.36</slf4j.version>
-        <spark.version>3.3.0</spark.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <spark.version>3.5.1</spark.version>
         <spring.version>6.0.6</spring.version>
         <storm.version>1.2.4</storm.version>
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
@@ -84,6 +89,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
             <version>${commons-compress.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -120,11 +130,25 @@
             <version>${logback.version}</version>            
         </dependency>
         
+        <!-- 密码学 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>${bc-provider.version}</version>
+        </dependency>
+
         <!-- bean -->
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
             <version>${orika.version}</version>
+            <exclusions>
+                <!-- 和spark引入的janino冲突 -->
+                <exclusion>
+                    <groupId>org.codehaus.janino</groupId>
+                    <artifactId>janino</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- hibernate validator -->
@@ -354,21 +378,29 @@
         
         <!-- JSON -->
         <!-- 暂时disable，因为spark需要特定版本的jackson -->
-        <!-- <dependency>
+        <!-- 强制声明，spark引用的jackson有冲突 -->
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.8.1</version>
-        </dependency>-->
+            <version>${jackson.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>${jsoup.version}</version>
         </dependency>
+        
+        <!-- network -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>${jsch.version}</version>
         </dependency>
 
         <!-- search -->
@@ -379,7 +411,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-common</artifactId>
+            <artifactId>lucene-analysis-common</artifactId>
             <version>${lucene.version}</version>
         </dependency>
         <dependency>
@@ -389,7 +421,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-smartcn</artifactId>
+            <artifactId>lucene-analysis-smartcn</artifactId>
             <version>${lucene.version}</version>
         </dependency>
         <dependency>
@@ -412,33 +444,33 @@
         <!-- Spark -->
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.12</artifactId>
+            <artifactId>spark-core_${scala-release.version}</artifactId>
             <version>${spark.version}</version>
             <scope>provided</scope>
             <!-- 暂时disable，因为spark需要 -->
             <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
+                <!--<exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-1.2-api</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>-->
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j2-impl</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.12</artifactId>
+            <artifactId>spark-sql_${scala-release.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-mllib_2.12</artifactId>
+            <artifactId>spark-mllib_${scala-release.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
         <!--临时加入解决spark自带hadoop-client版本低导致guava版本低的问题 -->
@@ -495,7 +527,7 @@
         </dependency>
         
         <!-- 紧急修复log4j漏洞 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>2.17.1</version>
@@ -507,7 +539,7 @@
             <artifactId>log4j-core</artifactId>
             <version>2.17.1</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         
         <!-- OpenCV -->
         <dependency>
