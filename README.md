@@ -32,11 +32,13 @@
 - org.xpen.hello.cli 演示Jansi让控制台输出彩色文字
 - org.xpen.hello.compress common-compress压缩测试
 - org.xpen.hello.concurrent.forkjoin JDK7 fork join研究
+- org.xpen.hello.crypto AES/CBC/PKCS7Padding 解密测试
 - org.xpen.hello.excel 演示用poi生成一个带简单pivot table的xlsx文件
 - org.xpen.hello.jmx 演示Spring JMX暴露jmx-beans.xml中配置的bean
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
 - org.xpen.hello.math.ml 线性回归(两种方式——commons-math和spark-ml)
 - org.xpen.hello.metrics metrics演示
+- org.xpen.hello.network SSH连接, HTTP mock演示
 - org.xpen.hello.nlp 自然语言处理(人名识别,简繁转换)
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点

@@ -26,6 +26,7 @@
         <commons-text.version>1.10.0</commons-text.version>
         <curator.version>5.2.0</curator.version>
         <decentxml.version>1.4</decentxml.version>
+        <ersatz.version>4.0.1</ersatz.version>
         <flying-saucer.version>9.0.6</flying-saucer.version>
         <fop.version>2.6</fop.version>
         <freemarker.version>2.3.20</freemarker.version>
@@ -655,6 +656,12 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
             <version>${curator.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.cjstehno.ersatz</groupId>
+            <artifactId>ersatz</artifactId>
+            <version>${ersatz.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- TEST end -->
