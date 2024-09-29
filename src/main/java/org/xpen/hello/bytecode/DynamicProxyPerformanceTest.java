@@ -5,6 +5,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.text.DecimalFormat;
 
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+
+import javassist.ClassClassPath;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtField;
@@ -16,11 +22,6 @@ import javassist.util.proxy.ProxyObject;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.FieldVisitor;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
 
 /**
  * 动态代理方案性能对比
@@ -34,6 +35,9 @@ import org.objectweb.asm.Opcodes;
  * 
  * 出处
  * http://javatar.iteye.com/blog/814426
+ * 
+ * 运行vm arg:
+ * --add-opens java.base/java.lang=ALL-UNNAMED
  *
  */
 public class DynamicProxyPerformanceTest {
@@ -156,6 +160,7 @@ public class DynamicProxyPerformanceTest {
 
 	private static CountService createJavassistBytecodeDynamicProxy(CountService delegate) throws Exception {
 		ClassPool mPool = new ClassPool(true);
+		mPool.insertClassPath(new ClassClassPath(CountService.class));
 		CtClass mCtc = mPool.makeClass(CountService.class.getName() + "JavaassistProxy");
 		mCtc.addInterface(mPool.get(CountService.class.getName()));
 		mCtc.addConstructor(CtNewConstructor.defaultConstructor(mCtc));

@@ -12,7 +12,7 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.zip.Zip64Mode;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
 public class CompressTest {
@@ -20,15 +20,10 @@ public class CompressTest {
     //测试压缩
     @Test
     public void testCompress() throws Exception {
-        /* Create Output Stream that will have final zip files */
         OutputStream zip_output = new FileOutputStream(new File("target/zip_output_test.zip"));
-        /* Create Archive Output Stream that attaches File Output Stream / and specifies type of compression */
         ArchiveOutputStream logical_zip = new ArchiveStreamFactory().createArchiveOutputStream(ArchiveStreamFactory.ZIP, zip_output);
-        /* Create Archieve entry - write header information*/
         logical_zip.putArchiveEntry(new ZipArchiveEntry("discussionForumHome.xml"));
-        /* Copy input file */
         IOUtils.copy(new FileInputStream(new File("src/test/resources/xml/xslt/1/discussionForumHome.xml")), logical_zip);
-        /* Close Archieve entry, write trailer information */
         logical_zip.closeArchiveEntry();
         /* Repeat steps for file - 2 */
         logical_zip.putArchiveEntry(new ZipArchiveEntry("discussionForumHome.xsl"));

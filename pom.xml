@@ -13,17 +13,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
-        <asm.version>5.0.3</asm.version>
+        <asm.version>7.1</asm.version>
         <aspectj.version>1.8.10</aspectj.version>
         <batik-codec.version>1.14</batik-codec.version>
         <bc-provider.version>1.77</bc-provider.version>
-        <cglib.version>3.1</cglib.version>
-        <commons-codec.version>1.16.0</commons-codec.version>
-        <commons-compress.version>1.21</commons-compress.version>
-        <commons-io.version>2.14.0</commons-io.version>
+        <cglib.version>3.2.12</cglib.version>
+        <commons-codec.version>1.17.1</commons-codec.version>
+        <commons-compress.version>1.27.1</commons-compress.version>
+        <commons-io.version>2.17.0</commons-io.version>
         <commons-lang.version>3.13.0</commons-lang.version>
         <commons-math.version>3.6.1</commons-math.version>
-        <commons-text.version>1.10.0</commons-text.version>
+        <commons-text.version>1.12.0</commons-text.version>
         <curator.version>5.2.0</curator.version>
         <decentxml.version>1.4</decentxml.version>
         <ersatz.version>4.0.1</ersatz.version>
@@ -39,7 +39,7 @@
         <jakarta.el-api.version>5.0.1</jakarta.el-api.version>
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-        <javassist.version>3.18.2-GA</javassist.version>
+        <javassist.version>3.25.0-GA</javassist.version>
         <javacpp.version>1.5.9</javacpp.version>
         <javacv.version>1.5.9</javacv.version>
         <javacpp.flandmark.version>1.07-1.5.8</javacpp.flandmark.version>
@@ -50,10 +50,10 @@
         <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.9.1</junit.version>
         <kryo.version>5.5.0</kryo.version>
-        <logback.version>1.4.11</logback.version>
-        <lucene.version>9.6.0</lucene.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <metrics.version>4.1.0</metrics.version>
+        <logback.version>1.5.6</logback.version>
+        <lucene.version>9.9.2</lucene.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <metrics.version>4.1.22</metrics.version>
         <okhttp.version>4.10.0</okhttp.version>
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <opennlp.version>1.9.4</opennlp.version>
@@ -64,7 +64,7 @@
         <selenium.version>4.1.0</selenium.version>
         <slf4j.version>2.0.9</slf4j.version>
         <spark.version>3.5.1</spark.version>
-        <spring.version>6.0.6</spring.version>
+        <spring.version>6.1.8</spring.version>
         <storm.version>1.2.4</storm.version>
         <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
         <tesseract.version>5.2.0-1.5.8</tesseract.version>
