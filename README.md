@@ -38,6 +38,7 @@
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
 - org.xpen.hello.math.ml 线性回归(两种方式——commons-math和spark-ml)
 - org.xpen.hello.metrics metrics演示
+- org.xpen.hello.mockito mockito演示
 - org.xpen.hello.network SSH连接, HTTP mock演示
 - org.xpen.hello.nlp 自然语言处理(人名识别,简繁转换)
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
