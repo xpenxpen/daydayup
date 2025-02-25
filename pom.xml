@@ -26,6 +26,7 @@
         <commons-text.version>1.12.0</commons-text.version>
         <curator.version>5.2.0</curator.version>
         <decentxml.version>1.4</decentxml.version>
+		<elasticsearch.version>8.12.1</elasticsearch.version>
         <ersatz.version>4.0.1</ersatz.version>
         <flying-saucer.version>9.0.6</flying-saucer.version>
         <fop.version>2.6</fop.version>
@@ -441,6 +442,11 @@
                     <artifactId>solr-core</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>${elasticsearch.version}</version>
         </dependency>
         
         <!-- Spark -->

@@ -43,6 +43,7 @@
 - org.xpen.hello.nlp 自然语言处理(人名识别,简繁转换)
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
+- org.xpen.hello.search.elasticsearch ElasticSearch索引,查询,ESQL演示
 - org.xpen.hello.search.lucene lucene分词、空间搜索
 - org.xpen.hello.selenium 浏览器自动化点击
 - org.xpen.hello.serialize kryo入门
