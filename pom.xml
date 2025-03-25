@@ -41,9 +41,16 @@
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <javassist.version>3.25.0-GA</javassist.version>
-        <javacpp.version>1.5.9</javacpp.version>
-        <javacv.version>1.5.9</javacv.version>
+        <javacv.version>1.5.11</javacv.version>
+        <javacpp.platform.windows-x86_64>windows-x86_64</javacpp.platform.windows-x86_64>
+        <javacpp.ffmpeg.version>7.1-1.5.11</javacpp.ffmpeg.version>
         <javacpp.flandmark.version>1.07-1.5.8</javacpp.flandmark.version>
+        <javacpp.leptonica.version>1.85.0-1.5.11</javacpp.leptonica.version>
+        <javacpp.opencv.version>4.10.0-1.5.11</javacpp.opencv.version>
+        <javacpp.openblas.version>0.3.28-1.5.11</javacpp.openblas.version>
+        <javacpp.openpose.version>1.7.0-1.5.8</javacpp.openpose.version>
+        <javacpp.tensorflow.version>1.14.0-1.5.1</javacpp.tensorflow.version>
+        <javacpp.tesseract.version>5.5.0-1.5.11</javacpp.tesseract.version>
         <jfreechart.version>1.5.0</jfreechart.version>
         <jgrapht.version>1.5.1</jgrapht.version>
         <jgraphx.version>4.2.2</jgraphx.version>
@@ -59,7 +66,6 @@
         <okhttp.version>4.10.0</okhttp.version>
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <opennlp.version>1.9.4</opennlp.version>
-        <openpose.version>1.7.0-1.5.8</openpose.version>
         <orika.version>1.5.4</orika.version>
         <poi.version>5.2.3</poi.version>
         <scala-release.version>2.12</scala-release.version>
@@ -68,8 +74,6 @@
         <spark.version>3.5.1</spark.version>
         <spring.version>6.1.8</spring.version>
         <storm.version>1.2.4</storm.version>
-        <tensorflow.version>1.14.0-1.5.1</tensorflow.version>
-        <tesseract.version>5.2.0-1.5.8</tesseract.version>
         <unbescape.version>1.1.5.RELEASE</unbescape.version>
         <zip4j.version>2.11.5</zip4j.version>
         <zookeeper.version>3.7.0</zookeeper.version>
@@ -550,35 +554,76 @@
         </dependency>-->
         
         <!-- OpenCV -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacv-platform</artifactId>
             <version>${javacv.version}</version>
-        </dependency>
+        </dependency>-->
+		<dependency>
+		  	<groupId>org.bytedeco</groupId>
+		  	<artifactId>javacv</artifactId>
+		  	<version>${javacv.version}</version>
+		</dependency>
+		<dependency>
+		  	<groupId>org.bytedeco</groupId>
+		  	<artifactId>opencv</artifactId>
+		  	<version>${javacpp.opencv.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
+		<dependency>
+		  	<groupId>org.bytedeco</groupId>
+		  	<artifactId>javacpp</artifactId>
+		  	<version>${javacv.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>ffmpeg</artifactId>
+		    <version>${javacpp.ffmpeg.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
+		<!--<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>flandmark</artifactId>
+		    <version>${javacpp.flandmark.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>flandmark-platform</artifactId>
             <version>${javacpp.flandmark.version}</version>
-        </dependency>
+        </dependency>-->
 
-        <!-- OCR -->
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>tesseract-platform</artifactId>
-            <version>${tesseract.version}</version>
-        </dependency>
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>openblas</artifactId>
+		    <version>${javacpp.openblas.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>leptonica</artifactId>
+		    <version>${javacpp.leptonica.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>tesseract</artifactId>
+		    <version>${javacpp.tesseract.version}</version>
+		    <classifier>${javacpp.platform.windows-x86_64}</classifier>
+		</dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>openpose-platform</artifactId>
-            <version>${openpose.version}</version>
-        </dependency>
+            <version>${javacpp.openpose.version}</version>
+        </dependency>-->
         
         <!-- tensorflow -->
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>tensorflow-platform</artifactId>
-            <version>${tensorflow.version}</version>
+            <version>${javacpp.tensorflow.version}</version>
         </dependency>
         <!-- <dependency>
             <groupId>org.tensorflow</groupId>

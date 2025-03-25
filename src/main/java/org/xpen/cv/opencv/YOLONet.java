@@ -20,8 +20,6 @@ package org.xpen.cv.opencv;
 
 import static org.bytedeco.opencv.global.opencv_core.CV_32F;
 import static org.bytedeco.opencv.global.opencv_core.getCudaEnabledDeviceCount;
-import static org.bytedeco.opencv.global.opencv_highgui.imshow;
-import static org.bytedeco.opencv.global.opencv_highgui.waitKey;
 import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
 import static org.bytedeco.opencv.global.opencv_imgproc.LINE_8;
 
@@ -32,9 +30,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.WindowConstants;
+
 import org.bytedeco.javacpp.FloatPointer;
 import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.indexer.FloatIndexer;
+import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.OpenCVFrameConverter;
 import org.bytedeco.opencv.global.opencv_dnn;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
@@ -55,15 +57,40 @@ import org.bytedeco.opencv.opencv_text.IntVector;
  */
 public class YOLONet {
 
-    public static void main(String[] args) {
-        Mat image = imread("D:/down/dog.jpg");
+    private static final String IN_FOLDER = "src/test/resources/cv/";
 
-        YOLONet yolo = new YOLONet(
+	private Path configPath;
+    private Path weightsPath;
+    private Path namesPath;
+    private int width;
+    private int height;
+
+    private float confidenceThreshold = 0.5f;
+    private float nmsThreshold = 0.4f;
+
+    private Net net;
+    private StringVector outNames;
+
+    private List<String> names;
+    private static YOLONet yolo;
+
+    public static void main(String[] args) {
+
+        yolo = new YOLONet(
                 "D:/down/yolov4.cfg",
                 "D:/down/yolov4.weights",
                 "D:/down/coco.names",
                 608, 608);
         yolo.setup();
+        
+        go("dog.jpg");
+        go("fruit.jpg");
+    }
+
+    private static void go(String fileName) {
+        //load an image
+        System.out.println("Loading image from " + IN_FOLDER + fileName);
+        Mat image = imread(IN_FOLDER + fileName);
 
         List<ObjectDetectionResult> results = yolo.predict(image);
 
@@ -83,23 +110,8 @@ public class YOLONet {
             		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.1, fontColor, 3, 0, false);
         }
 
-        imshow("YOLO", image);
-        waitKey();
-    }
-
-    private Path configPath;
-    private Path weightsPath;
-    private Path namesPath;
-    private int width;
-    private int height;
-
-    private float confidenceThreshold = 0.5f;
-    private float nmsThreshold = 0.4f;
-
-    private Net net;
-    private StringVector outNames;
-
-    private List<String> names;
+        show(image, "YOLO");
+	}
 
     /**
      * Creates a new YOLO network.
@@ -261,6 +273,14 @@ public class YOLONet {
         boxes.releaseReference();
 
         return detections;
+    }
+
+    private static void show(final Mat image, final String title) {
+        CanvasFrame canvas = new CanvasFrame(title, 1);
+        canvas.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        final OpenCVFrameConverter.ToIplImage converter = new OpenCVFrameConverter.ToIplImage();
+
+        canvas.showImage(converter.convert(image));
     }
 
     /**

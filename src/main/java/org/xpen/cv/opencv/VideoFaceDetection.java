@@ -40,7 +40,7 @@ package org.xpen.cv.opencv;
 //import static org.bytedeco.opencv.global.opencv_videoio.cvWriteFrame;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.bytedeco.flandmark.FLANDMARK_Model;
+//import org.bytedeco.flandmark.FLANDMARK_Model;
 import org.bytedeco.opencv.opencv_core.CvMemStorage;
 import org.bytedeco.opencv.opencv_core.CvRect;
 import org.bytedeco.opencv.opencv_core.CvSeq;
@@ -72,7 +72,7 @@ public class VideoFaceDetection {
     private static final String CASCADE_FILE = "D:/git/opensource/flandmark/data/haarcascade_frontalface_alt.xml";
     private static final String FLANDMARK_MODEL = "D:/git/opensource/flandmark/data/flandmark_model.dat";
     
-    private static FLANDMARK_Model model;
+    //private static FLANDMARK_Model model;
 
     public static void main(String[] args) {
         

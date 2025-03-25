@@ -15,7 +15,8 @@
 - org.xpen.chess.tictactoe tictactoe游戏的人工智能人机博弈（alpha-beta,minimax,查表法）
 - org.xpen.coderead.java.util.concurrent jdk源码阅读注释
 - org.xpen.concurrent CLH 自旋锁,AbstractQueuedSynchronizer类研究
-- org.xpen.cv.opencv.FaceDetection opencv人脸识别,flandmark眼睛，鼻子，嘴检测
+- org.xpen.cv.opencv.FacemarkKazemiTest opencv人脸识别,kazemiFacemark眼睛，鼻子，嘴检测
+- org.xpen.cv.opencv.FacemarkLbfTest LBFFacemark摄像头/视频五官检测
 - org.xpen.cv.opencv.YOLONet YOLO v4目标检测
 - org.xpen.cv.tesseract tesseract文字识别
 - org.xpen.graph 演示jgraphx
