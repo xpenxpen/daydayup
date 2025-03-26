@@ -23,7 +23,6 @@ import static org.bytedeco.opencv.global.opencv_core.getCudaEnabledDeviceCount;
 import static org.bytedeco.opencv.global.opencv_imgcodecs.imread;
 import static org.bytedeco.opencv.global.opencv_imgproc.LINE_8;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -59,14 +58,16 @@ public class YOLONet {
 
     private static final String IN_FOLDER = "src/test/resources/cv/";
 
+    /** 用于过滤boxes的score阈值*/
+    private static final float SCORE_THRESHOLD = 0.5f;
+    /** NMS阈值*/
+    private static final float NMS_THRESHOLD = 0.4f;
+
 	private Path configPath;
     private Path weightsPath;
     private Path namesPath;
     private int width;
     private int height;
-
-    private float confidenceThreshold = 0.5f;
-    private float nmsThreshold = 0.4f;
 
     private Net net;
     private StringVector outNames;
@@ -74,7 +75,7 @@ public class YOLONet {
     private List<String> names;
     private static YOLONet yolo;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         yolo = new YOLONet(
                 "D:/down/yolov4.cfg",
@@ -85,6 +86,9 @@ public class YOLONet {
         
         go("dog.jpg");
         go("fruit.jpg");
+        go("train.jpg");
+        go("cat.jpg");
+        go("horse.jpg");
     }
 
     private static void go(String fileName) {
@@ -107,7 +111,7 @@ public class YOLONet {
             
             Point point2 = new Point(result.x, result.y);
             opencv_imgproc.putText(image, result.className,
-            		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.1, fontColor, 3, 0, false);
+            		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.1, fontColor, 2, 0, false);
         }
 
         show(image, "YOLO");
@@ -134,13 +138,24 @@ public class YOLONet {
      *
      * @return True if the network initialisation was successful.
      */
-    public boolean setup() {
+    public boolean setup() throws Exception {
+    	//加载采用Darknet的配置网络和训练的权重参数
         net = opencv_dnn.readNetFromDarknet(
                 configPath.toAbsolutePath().toString(),
                 weightsPath.toAbsolutePath().toString());
+        
+        StringVector layerNames = net.getLayerNames();
+        System.out.println("Layer count=" + layerNames.size());
+//        for (int i = 0; i < layerNames.size(); i++) {
+//        	 System.out.println(layerNames.get(i).getString());
+//        }
+       
 
         // setup output layers
         outNames = net.getUnconnectedOutLayersNames();
+        for (int i = 0; i < outNames.size(); i++) {
+       	 	System.out.println(outNames.get(i).getString());
+        }
 
         // enable cuda backend if available
         if (getCudaEnabledDeviceCount() > 0) {
@@ -149,12 +164,7 @@ public class YOLONet {
         }
 
         // read names file
-        try {
-            names = Files.readAllLines(namesPath);
-        } catch (IOException e) {
-            System.err.println("Could not read names file!");
-            e.printStackTrace();
-        }
+        names = Files.readAllLines(namesPath);
 
         return !net.empty();
     }
@@ -166,7 +176,8 @@ public class YOLONet {
      * @return List of objects that have been detected.
      */
     public List<ObjectDetectionResult> predict(Mat frame) {
-        Mat inputBlob = opencv_dnn.blobFromImage(frame,
+    	//将数据加入到模型之前，需要对数据进行tranform
+    	Mat inputBlob = opencv_dnn.blobFromImage(frame,
                 1 / 255.0,
                 new Size(width, height),
                 new Scalar(0.0),
@@ -176,6 +187,7 @@ public class YOLONet {
 
         // run detection
         MatVector outs = new MatVector(outNames.size());
+        //前向传递
         net.forward(outs, outNames);
 
         // evaluate result
@@ -196,8 +208,16 @@ public class YOLONet {
      * @return List of objects
      */
     private List<ObjectDetectionResult> postprocess(Mat frame, MatVector outs) {
-        final IntVector classIds = new IntVector();
+        for (int i = 0; i < outs.size(); ++i) {
+        	Mat result = outs.get(i);
+        	System.out.println(result);
+        }
+        
+        //检测到的对象的类标签
+    	final IntVector classIds = new IntVector();
+        //置信度值，较低的置信度值表示该对象可能不是网络认为的对象。将过滤掉小于 0.5 阈值的对象
         final FloatVector confidences = new FloatVector();
+        //对象的边界框
         final RectVector boxes = new RectVector();
 
         for (int i = 0; i < outs.size(); ++i) {
@@ -218,7 +238,7 @@ public class YOLONet {
                     }
                 }
 
-                if (maxScore > confidenceThreshold) {
+                if (maxScore > SCORE_THRESHOLD) {
                     int centerX = (int) (data.get(j, 0) * frame.cols());
                     int centerY = (int) (data.get(j, 1) * frame.rows());
                     int width = (int) (data.get(j, 2) * frame.cols());
@@ -230,6 +250,12 @@ public class YOLONet {
                     confidences.push_back(maxScore);
 
                     boxes.push_back(new Rect(left, top, width, height));
+                    
+                    System.out.println("增加候选:maxIndex=" + maxIndex
+                    		+ "(" + names.get(maxIndex) + ")"
+                    		+ ",maxScore=" + maxScore
+                    		+ ",left=" + left + ",top=" + top
+            				+ ",width=" + width + ",height=" + height);
                 }
             }
 
@@ -242,7 +268,11 @@ public class YOLONet {
         FloatPointer confidencesPointer = new FloatPointer(confidences.size());
         confidencesPointer.put(confidences.get());
 
-        opencv_dnn.NMSBoxes(boxes, confidencesPointer, confidenceThreshold, nmsThreshold, indices, 1.f, 0);
+        //根据给定的检测boxes和对应的scores进行NMS(Non-Maximum Suppression,非极大值抑制)处理
+        opencv_dnn.NMSBoxes(
+        		boxes, confidencesPointer,
+        		SCORE_THRESHOLD, NMS_THRESHOLD,
+        		indices, 1.f, 0);
 
         // create result list
         List<ObjectDetectionResult> detections = new ArrayList<>();
