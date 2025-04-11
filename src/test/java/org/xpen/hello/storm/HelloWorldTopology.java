@@ -21,7 +21,7 @@ public class HelloWorldTopology {
                 .shuffleGrouping("randomHelloWorld");
                 
         Config conf = new Config();
-        conf.setDebug(true);
+        conf.setDebug(false);
         
         if(args!=null && args.length > 0) {
             conf.setNumWorkers(20);
