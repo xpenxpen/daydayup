@@ -3,6 +3,12 @@ package org.xpen.hello.spring.aop;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * Spring HTTP Invoker 在 Spring 5.3中被标记为 deprecated
+ * 随后在 Spring 6.0里被完全移除
+ * 如果想要运行，请手工降级spring
+ *
+ */
 public class ServerMain {
 
     public static void main(String[] args) {
