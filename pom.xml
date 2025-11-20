@@ -481,10 +481,10 @@
                     <groupId>org.apache.logging.log4j</groupId>
                     <artifactId>log4j-slf4j2-impl</artifactId>
                 </exclusion>
-                <exclusion>
+                <!--<exclusion>
                     <groupId>com.esotericsoftware</groupId>
                     <artifactId>kryo-shaded</artifactId>
-                </exclusion>
+                </exclusion>-->
             </exclusions>
         </dependency>
         <dependency>
@@ -517,6 +517,12 @@
             <artifactId>storm-client</artifactId>
             <version>${storm.version}</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.esotericsoftware</groupId>
+                    <artifactId>kryo</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.storm</groupId>
@@ -643,11 +649,11 @@
         </dependency>-->
         
         <!-- Serialization -->
-        <dependency>
+        <!--<dependency>
            <groupId>com.esotericsoftware</groupId>
            <artifactId>kryo</artifactId>
            <version>${kryo.version}</version>
-        </dependency>
+        </dependency>-->
         
         <!-- metrics -->
         <dependency>
@@ -681,6 +687,11 @@
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-client</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-examples</artifactId>
             <version>${curator.version}</version>
         </dependency>
 
