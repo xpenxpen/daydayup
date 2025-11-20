@@ -45,6 +45,7 @@ public class SemaphoreTest {
 		public void run() {
 	        //获取信号量锁
 			InterProcessSemaphoreV2 semaphore = new InterProcessSemaphoreV2(zkClient, "/locks/mySemaphore", 3);
+			semaphore.setNodeData(("my_node_" + String.valueOf(id)).getBytes());
 			Lease lease = null;
 			try {
 	        	lease = semaphore.acquire();
