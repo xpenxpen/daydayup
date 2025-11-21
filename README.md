@@ -2,7 +2,7 @@
 好好学习，天天向上。
 
 ## 编译
-- 环境： JAVA 17
+- 环境： JAVA 21
 - mvn clean package -Dmaven.test.skip=true
 
 ## 演示内容
@@ -56,5 +56,5 @@
 - org.xpen.hello.xml.decentxml 演示decentxml可以在保留原来xml的空格的基础上修改xml
 - org.xpen.hello.xml.xslt 测试XSLT转换XML,并转为PDF
 - org.xpen.hello.zookeeper 演示用Embedded ZooKeeper做单元测试
-- org.xpen.hello.zookeeper.curator 演示curator分布式锁
+- org.xpen.hello.zookeeper.curator 演示curator分布式锁,缓存用来监听节点
 
