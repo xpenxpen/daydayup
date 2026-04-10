@@ -22,7 +22,10 @@ import org.elasticsearch.client.RestClientBuilder;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +34,7 @@ import co.elastic.clients.elasticsearch._types.Result;
 import co.elastic.clients.elasticsearch.core.IndexResponse;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
+import co.elastic.clients.elasticsearch.esql.query.EsqlFormat;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
 import co.elastic.clients.transport.ElasticsearchTransport;
 import co.elastic.clients.transport.endpoints.BinaryResponse;
@@ -40,6 +44,7 @@ import junit.framework.Assert;
 /**
  * ElasticSearch演示
  */
+@TestMethodOrder(OrderAnnotation.class)
 public class ElasticSearchTest {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchTest.class);
@@ -47,13 +52,14 @@ public class ElasticSearchTest {
 
     @BeforeAll
     public static void setUp() throws Exception {
-		esClient = buildEsClient("https://host:9200", "user", "pass");
+		sClient = buildEsClient("https://host:9200", "user", "pass");
 	}
 	
     /**
      * 索引,查询
      */
     @Test
+    @Order(-1)
     public void testSimple() throws Exception {
 		Person person = new Person(20, "Mark Doe", new Date(1471466076564L));
 		IndexResponse response = esClient.index(i -> i
@@ -94,7 +100,7 @@ public class ElasticSearchTest {
 		String query ="from person" + 
 			        "| where fullName == \"Mark Doe\"";
 		BinaryResponse response = esClient.esql().query(q -> q
-			    .format("csv")
+			    .format(EsqlFormat.Csv)
 			    .delimiter(",")
 			    .query(query));
 		String csv = new BufferedReader(new InputStreamReader(response.content()))
@@ -110,7 +116,7 @@ public class ElasticSearchTest {
 				+ "| LIMIT 10"
 				+ "| STATS AVG(system.cpu.idle.norm.pct)";
 		response = esClient.esql().query(q -> q
-			    .format("csv")
+			    .format(EsqlFormat.Csv)
 			    .delimiter(",")
 			    .query(query2));
 		csv = new BufferedReader(new InputStreamReader(response.content()))

@@ -89,6 +89,10 @@ public class YOLONet {
         go("train.jpg");
         go("cat.jpg");
         go("horse.jpg");
+        go("cook.jpg");
+        go("kitchen.jpg");
+        go("street.jpg");
+        go("cat_remote_control.jpg");
     }
 
     private static void go(String fileName) {
@@ -111,7 +115,7 @@ public class YOLONet {
             
             Point point2 = new Point(result.x, result.y);
             opencv_imgproc.putText(image, result.className,
-            		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.1, fontColor, 2, 0, false);
+            		point2, opencv_imgproc.CV_FONT_VECTOR0, 1.0, fontColor, 2, 0, false);
         }
 
         show(image, "YOLO");

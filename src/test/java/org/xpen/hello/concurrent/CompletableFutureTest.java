@@ -52,6 +52,7 @@ public class CompletableFutureTest {
         	.exceptionally(this::runFailureNotify);
     	
     	allFutures.join();
+    	executorService.shutdown();
     }
     
     private void simulateTask(String message) {

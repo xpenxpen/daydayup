@@ -34,6 +34,18 @@
 - org.xpen.hello.compress common-compress压缩测试
 - org.xpen.hello.concurrent.forkjoin JDK7 fork join研究
 - org.xpen.hello.crypto AES/CBC/PKCS7Padding 解密测试
+- org.xpen.hello.dl.basic 深度学习基础(cpython,numpy,djl NDArray,tablesaw)
+- org.xpen.hello.dl.djl.cv DJL深度学习视觉任务演示
+    - ActionRecognition 动作识别
+    - BigGan 生成对抗网络进行图像生成
+    - Cifar10Classification CIFAR-10图像分类
+    - MnistClassification MNIST手写数字识别
+    - MnistTrain MNIST训练
+    - ObjectDetection 目标检测（YOLO等模型）
+    - ObjectDetectionZeroShot 零样本目标检测
+    - PoseEstimation 姿态估计
+    - SegInstanceSegmentation 实例分割
+    - SegSegmentAnything2 SAM2模型分割
 - org.xpen.hello.excel 演示用poi生成一个带简单pivot table的xlsx文件
 - org.xpen.hello.jmx 演示Spring JMX暴露jmx-beans.xml中配置的bean
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
@@ -41,7 +53,9 @@
 - org.xpen.hello.metrics metrics演示
 - org.xpen.hello.mockito mockito演示
 - org.xpen.hello.network SSH连接, HTTP mock演示
-- org.xpen.hello.nlp 自然语言处理(人名识别,简繁转换)
+- org.xpen.hello.nlp.HanLpWord2VectorTest 语义距离,类推问题
+- org.xpen.hello.nlp.HelloHanLp 自然语言处理,分词,人名识别,地名,机构名识别,关键词提取,自动摘要,简繁转换,文本推荐,依存句法分析
+- org.xpen.hello.nlp.LanguageDetectorTest opennlp多国语言检测
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
 - org.xpen.hello.search.elasticsearch ElasticSearch索引,查询,ESQL演示
@@ -57,4 +71,3 @@
 - org.xpen.hello.xml.xslt 测试XSLT转换XML,并转为PDF
 - org.xpen.hello.zookeeper 演示用Embedded ZooKeeper做单元测试
 - org.xpen.hello.zookeeper.curator 演示curator分布式锁,缓存用来监听节点
-
