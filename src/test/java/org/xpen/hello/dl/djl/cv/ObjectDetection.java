@@ -106,12 +106,12 @@ public class ObjectDetection {
         Files.createDirectories(outputDir);
 
         img.drawBoundingBoxes(detection);
-        CvUtil.showImage(img, image);
 
         Path imagePath = outputDir.resolve(image.replace(".jpg", ".png"));
         // OpenJDK can't save jpg with alpha channel
         img.save(Files.newOutputStream(imagePath), "png");
         LOGGER.info("Detected objects image has been saved in: {}", imagePath);
+        CvUtil.showImage(img, image);
     }
     
 }

@@ -52,7 +52,7 @@ public class ElasticSearchTest {
 
     @BeforeAll
     public static void setUp() throws Exception {
-		sClient = buildEsClient("https://host:9200", "user", "pass");
+		esClient = buildEsClient("https://host:9200", "user", "pass");
 	}
 	
     /**

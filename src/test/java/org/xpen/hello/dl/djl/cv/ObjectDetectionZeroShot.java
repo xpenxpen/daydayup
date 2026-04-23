@@ -41,10 +41,10 @@ public final class ObjectDetectionZeroShot {
     	int modelType = 1;
     	//yolov8s-worldv2问题多,只能检测cat_remote_control
     	String[][] images = {
-    			{"dog.jpg", "bike,tree"},
-    			{"fruit.jpg", "pear,kiwi"},
+    			{"dog.jpg", "bike,tree,wheel"},
+    			{"fruit.jpg", "pear,kiwi,red fruit,yellow fruit"},
     			{"train.jpg", "sea,building"},
-    			{"cat.jpg", "kitten,flower"},
+    			{"cat.jpg", "animal,ear"},
     			{"horse.jpg", "hen,chick,donkey,horse,pig,cow,sheep"},
     			{"cook.jpg", "pot,lamp"},
     			{"kitchen.jpg", "door,lamp"},
@@ -103,12 +103,12 @@ public final class ObjectDetectionZeroShot {
         Files.createDirectories(outputDir);
 
         img.drawBoundingBoxes(detection);
-        CvUtil.showImage(img, image);
 
         Path imagePath = outputDir.resolve(image.replace(".jpg", ".png"));
         // OpenJDK can't save jpg with alpha channel
         img.save(Files.newOutputStream(imagePath), "png");
         LOGGER.info("Detected objects image has been saved in: {}", imagePath);
+        CvUtil.showImage(img, image);
     }
     
 }

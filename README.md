@@ -35,6 +35,7 @@
 - org.xpen.hello.concurrent.forkjoin JDK7 fork join研究
 - org.xpen.hello.crypto AES/CBC/PKCS7Padding 解密测试
 - org.xpen.hello.dl.basic 深度学习基础(cpython,numpy,djl NDArray,tablesaw)
+- org.xpen.hello.dl.djl.clip CLIP图像和文本描述匹配度的示例
 - org.xpen.hello.dl.djl.cv DJL深度学习视觉任务演示
     - ActionRecognition 动作识别
     - BigGan 生成对抗网络进行图像生成
@@ -46,6 +47,13 @@
     - PoseEstimation 姿态估计
     - SegInstanceSegmentation 实例分割
     - SegSegmentAnything2 SAM2模型分割
+    - SegSemanticSegmentation deeplabv3模型语义分割
+    - StyleTransfer cyclegan风格迁移
+- org.xpen.hello.dl.djl.nlp DJL深度学习自然语言处理演示
+    - ExtractiveQa 抽取式问答(既能支持pytorch又能支持mxnet)
+    - FillMask 使用DistilBERT做填空
+    - SentimentAnalysis 使用DistilBERT做情感分析
+    - TokenClassification 词元分类,命名实体识别(NER)
 - org.xpen.hello.excel 演示用poi生成一个带简单pivot table的xlsx文件
 - org.xpen.hello.jmx 演示Spring JMX暴露jmx-beans.xml中配置的bean
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)

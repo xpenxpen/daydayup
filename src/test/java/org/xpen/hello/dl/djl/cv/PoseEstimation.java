@@ -26,13 +26,15 @@ public class PoseEstimation {
     private static final Logger LOGGER = LoggerFactory.getLogger(PoseEstimation.class);
 
 	public static void main(String[] args) throws Exception {
-        Joints[] joints = predict();
-        LOGGER.info("{}", Arrays.toString(joints));
+        predict();
 	}
 	
-    public static Joints[] predict() throws Exception {
-        Path imageFile = Paths.get("src/test/resources/dl/pose_soccer.png");
-        Image img = ImageFactory.getInstance().fromFile(imageFile);
+    public static void predict() throws Exception {
+        String[] images = {
+            "pose_soccer.png",
+            "action_dance.jpg",
+            "action_discus_throw.png",
+        };
 
         Criteria<Image, Joints[]> criteria =
                 Criteria.builder()
@@ -43,12 +45,17 @@ public class PoseEstimation {
 
         try (ZooModel<Image, Joints[]> pose = criteria.loadModel();
                 Predictor<Image, Joints[]> predictor = pose.newPredictor()) {
-            Joints[] allJoints = predictor.predict(img);
-            for (Joints joints : allJoints) {
-                img.drawJoints(joints);
-            }
-            CvUtil.showImage(img, "Pose Estimation");
-            return allJoints;
+        	
+        	for (String imageName : images) {
+        		Path imageFile = Paths.get("src/test/resources/dl/" + imageName);
+                Image img = ImageFactory.getInstance().fromFile(imageFile);
+                Joints[] allJoints = predictor.predict(img);
+                LOGGER.info("{}", Arrays.toString(allJoints));
+                for (Joints joints : allJoints) {
+                    img.drawJoints(joints);
+                }
+                CvUtil.showImage(img, "Pose Estimation");
+        	}
         }
     }
     
