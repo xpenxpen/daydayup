@@ -48,7 +48,7 @@ public class FacemarkKazemiTest {
         
         go("lena.jpg");
         go("group.jpg");
-
+        go("largest_selfie.jpg");
 	}
 
 	private static void go(String fileName) throws Exception {

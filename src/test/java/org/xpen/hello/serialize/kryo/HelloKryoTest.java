@@ -1,4 +1,4 @@
-package org.xpen.hello.serialize;
+package org.xpen.hello.serialize.kryo;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

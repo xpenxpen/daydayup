@@ -15,6 +15,7 @@
         <java.version>21</java.version>
         <asm.version>7.1</asm.version>
         <aspectj.version>1.8.10</aspectj.version>
+        <avro.version>1.12.1</avro.version>
         <batik-codec.version>1.14</batik-codec.version>
         <bc-provider.version>1.80</bc-provider.version>
         <cglib.version>3.2.12</cglib.version>
@@ -36,9 +37,10 @@
         <hadoop.version>3.3.4</hadoop.version>
         <hanlp.version>portable-1.8.2</hanlp.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <httpclient5.version>5.6.1</httpclient5.version>
         <itext.version>5.5.13.3</itext.version>
         <itext-asian.version>5.2.0</itext-asian.version>
-        <jackson.version>2.15.2</jackson.version>
+        <jackson.version>2.21.2</jackson.version>
         <jakarta.el-api.version>5.0.1</jakarta.el-api.version>
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
@@ -62,6 +64,7 @@
         <jsch.version>0.1.55</jsch.version>
         <jsoup.version>1.15.4</jsoup.version>
         <junit.version>5.11.4</junit.version>
+        <kafka.version>4.2.0</kafka.version>
         <kryo.version>5.5.0</kryo.version>
 		<log4j2.version>2.18.0</log4j2.version>
         <logback.version>1.5.6</logback.version>
@@ -69,13 +72,14 @@
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <metrics.version>4.1.22</metrics.version>
         <mockito.version>5.14.2</mockito.version>
-        <okhttp.version>4.10.0</okhttp.version>
+        <okhttp.version>4.12.0</okhttp.version>
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <opennlp.version>1.9.4</opennlp.version>
         <orika.version>1.5.4</orika.version>
         <pinyin.version>0.4.0</pinyin.version>
         <poi.version>5.2.3</poi.version>
         <scala-release.version>2.12</scala-release.version>
+        <schema-registry.version>8.2.0</schema-registry.version>
         <selenium.version>4.26.0</selenium.version>
         <slf4j.version>2.0.9</slf4j.version>
         <spark.version>3.5.1</spark.version>
@@ -84,7 +88,7 @@
         <tablesaw.version>0.44.4</tablesaw.version>
         <unbescape.version>1.1.5.RELEASE</unbescape.version>
         <zip4j.version>2.11.5</zip4j.version>
-        <zookeeper.version>3.9.4</zookeeper.version>
+        <zookeeper.version>3.9.5</zookeeper.version>
     </properties>
 
     <dependencies>
@@ -725,6 +729,11 @@
            <artifactId>kryo</artifactId>
            <version>${kryo.version}</version>
         </dependency>-->
+		<dependency>
+		    <groupId>org.apache.avro</groupId>
+		    <artifactId>avro</artifactId>
+		    <version>${avro.version}</version>
+		</dependency>
         
         <!-- metrics -->
         <dependency>
@@ -787,6 +796,39 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+        
+		<!-- Kafka -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>${kafka.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${schema-registry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-schema-serializer</artifactId>
+            <version>${schema-registry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-schema-registry-client</artifactId>
+            <version>${schema-registry.version}</version>
+        </dependency>
+        <!--schema-registry额外依赖-->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient5.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- TEST begin -->

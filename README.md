@@ -49,27 +49,33 @@
     - SegSegmentAnything2 SAM2模型分割
     - SegSemanticSegmentation deeplabv3模型语义分割
     - StyleTransfer cyclegan风格迁移
+- org.xpen.hello.dl.djl.face DJL深度学习人脸检测演示
 - org.xpen.hello.dl.djl.nlp DJL深度学习自然语言处理演示
     - ExtractiveQa 抽取式问答(既能支持pytorch又能支持mxnet)
     - FillMask 使用DistilBERT做填空
     - SentimentAnalysis 使用DistilBERT做情感分析
     - TokenClassification 词元分类,命名实体识别(NER)
+- org.xpen.hello.dl.djl.stablediffusion DJL深度学习stablediffusion文生图演示
 - org.xpen.hello.excel 演示用poi生成一个带简单pivot table的xlsx文件
 - org.xpen.hello.jmx 演示Spring JMX暴露jmx-beans.xml中配置的bean
+- org.xpen.hello.kafka 演示Kafka生产者消费者,kafka avro+schema-registry
 - org.xpen.hello.math.lp 线性规划(酿酒师问题)
 - org.xpen.hello.math.ml 线性回归(两种方式——commons-math和spark-ml)
 - org.xpen.hello.metrics metrics演示
 - org.xpen.hello.mockito mockito演示
 - org.xpen.hello.network SSH连接, HTTP mock演示
-- org.xpen.hello.nlp.HanLpWord2VectorTest 语义距离,类推问题
-- org.xpen.hello.nlp.HelloHanLp 自然语言处理,分词,人名识别,地名,机构名识别,关键词提取,自动摘要,简繁转换,文本推荐,依存句法分析
-- org.xpen.hello.nlp.LanguageDetectorTest opennlp多国语言检测
+- org.xpen.hello.nlp 自然语言
+    - HanLpWord2VectorTest 语义距离,类推问题
+    - HelloHanLp 自然语言处理,分词,人名识别,地名,机构名识别,关键词提取,自动摘要,简繁转换,文本推荐,依存句法
+    - LanguageDetectorTest opennlp多国语言检测
 - org.xpen.hello.pdf fop,itext两种方法输出pdf
 - org.xpen.hello.reflect 测试反射中一些疑问点
 - org.xpen.hello.search.elasticsearch ElasticSearch索引,查询,ESQL演示
 - org.xpen.hello.search.lucene lucene分词、空间搜索
 - org.xpen.hello.selenium 浏览器自动化点击
-- org.xpen.hello.serialize kryo入门
+- org.xpen.hello.serialize 序列化
+    - avro avro入门
+    - kryo kryo入门
 - org.xpen.hello.spark spark入门
 - org.xpen.hello.spring.aop Spring AOP 拦截 HTTP invoker测试
 - org.xpen.hello.storm storm入门
